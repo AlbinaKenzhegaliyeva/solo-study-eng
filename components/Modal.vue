@@ -6,11 +6,9 @@
           <slot name="header"></slot>
           <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close">
         </header>
-
         <section class="modal-body">
           <slot name="body"></slot>
         </section>
-
         <footer class="modal-footer">
           <slot name="footer"></slot>
         </footer>
