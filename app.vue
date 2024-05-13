@@ -89,7 +89,6 @@
       <img src="@/assets/img/london.svg" alt="London" class="banner__learn-eng-pic-london">
     </div>
   </div>
-
   <div class="banner__advantages">
     <h2>Почему нужно обучаться именно у нас?</h2>
     <div class="banner__advantages_first-row">
