@@ -1,5 +1,6 @@
 <template>
   <header>
+    <SideBar v-show="isMobileModelVisible" @close="closeMenu"></SideBar>
     <div class="secondary-header__show" v-show="isScrolled" v-if="isMobile">
       <div class="secondary-header__show-options">
         <img src="@/assets/img/englogo.svg" alt="logo">
@@ -51,7 +52,7 @@
     </div>
   </header>
 
-  <div class="banner__learn-eng">
+  <div class="banner__learn-eng" v-show="!isMobileModelVisible">
     <div class="banner__learn-eng-info">
       <h1>Изучайте английский язык вместе с SoLo English</h1>
       <p class="banner__learn-eng-info-text">Деловой английский по авторской методологии у сертифицированных
@@ -829,7 +830,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import DetailedInfo from '@/components/DetailedInfo.vue';
 import Modal from '~/components/Modal.vue';
-// import SideBar from '~/components/SideBar.vue';
+import SideBar from '~/components/SideBar.vue';
 
 export default {
   data() {
@@ -870,6 +871,11 @@ export default {
   methods: {
     openMenu() {
       this.isMobileModelVisible = true;
+      document.querySelector('.secondary-header').classList.add('myStyle')
+    },
+    closeMenu() {
+      this.isMobileModelVisible = false;
+      document.querySelector('.secondary-header').classList.remove('myStyle')
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
@@ -902,7 +908,7 @@ export default {
     SwiperSlide,
     DetailedInfo,
     Modal,
-    // SideBar,
+    SideBar,
   },
   setup() {
     return {
@@ -3034,6 +3040,10 @@ label {
     height: 812px;
     background: #fff;
     z-index: 10000000;
+  }
+
+  .myStyle {
+    display: none;
   }
 }
 </style>
