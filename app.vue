@@ -33,7 +33,7 @@
     <div class="secondary-header">
       <div class="secondary-header__school">
         <img src="@/assets/img/school.svg" alt="logo" class="secondary-header__school-logo">
-        <img src="@/assets/img/menu.svg" alt="menu" class="burger-menu-icon" @click="toggleMenu" v-show="isMobile">
+        <img src="@/assets/img/menu.svg" alt="menu" class="burger-menu-icon" v-show="isMobile" @click="openMenu">
       </div>
       <div class="secondary-header__options">
         <a href="#" class="secondary-header__options-text">Почему мы?</a>
@@ -829,6 +829,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import DetailedInfo from '@/components/DetailedInfo.vue';
 import Modal from '~/components/Modal.vue';
+// import SideBar from '~/components/SideBar.vue';
 
 export default {
   data() {
@@ -838,6 +839,8 @@ export default {
       isModalVisible: false,
       isFirstModalVisible: false,
       isScrolled: false,
+      isMobileModelVisible: false,
+      menuActive: false,
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -865,6 +868,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    openMenu() {
+      this.isMobileModelVisible = true;
+    },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
     },
@@ -896,6 +902,7 @@ export default {
     SwiperSlide,
     DetailedInfo,
     Modal,
+    // SideBar,
   },
   setup() {
     return {
@@ -3020,7 +3027,13 @@ label {
     }
   }
 
-
-
+  .secondary-header__school_model {
+    width: 100%;
+    border-radius: 0;
+    width: 338px;
+    height: 812px;
+    background: #fff;
+    z-index: 10000000;
+  }
 }
 </style>
