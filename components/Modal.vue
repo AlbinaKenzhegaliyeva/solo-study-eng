@@ -5,6 +5,7 @@
         <header class="modal-header">
           <slot name="header"></slot>
           <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close">
+          <img src="@/assets/img/close-white.svg" alt="close" @click="close" class="header__close_white">
         </header>
         <section class="modal-body">
           <slot name="body"></slot>
@@ -86,5 +87,20 @@ export default {
 
 .header__close {
   margin: 14px 0 700px 0;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.header__close_white {
+  display: none;
+
+  @media (max-width: 500px) {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 }
 </style>

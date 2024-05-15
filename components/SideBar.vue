@@ -2,7 +2,7 @@
     <div class="menu">
         <div class="menu__header">
             <img src="@/assets/img/school.svg" alt="logo" style="width: 165px; height: 49px;">
-            <img src="@/assets/img/close_mob.svg" alt="close" @click="close" class="header__close">
+            <img src="@/assets/img/close_mob.svg" alt="close" @click="close" class="header__close_black">
         </div>
         <div class="menu__body">
             <p>Почему мы?</p>
@@ -64,7 +64,7 @@ export default {
     justify-content: space-between;
 }
 
-.header__close {
+.header__close_black {
     margin-bottom: 0;
 }
 
