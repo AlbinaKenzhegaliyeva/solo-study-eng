@@ -434,10 +434,62 @@
       <div class="banner__guestion">
         <p class="banner__level-question-topic">А Вы знаете свой уровень английского языка?</p>
         <p class="banner__level-question-more">Пройдите БЕСПЛАТНЫЙ тест, и узнайте какой у Вас уровень английского</p>
-        <button class="banner__level-question-button">Пройти тест</button>
+        <button class="banner__level-question-button" @click="openTest">Пройти тест</button>
       </div>
     </div>
   </div>
+
+  <Modal v-show="isModalTestVisible" @close="closeTest">
+    <template #header>
+      <div class="modal__test">
+        <img src="@/assets/img/school.svg" alt="logo">
+        <p class="modal__test-topic">Тест на определение уровня английского языка</p>
+        <p class="modal__test-text">Сейчас Вы пройдете тест из 20 вопросов, который определит уровень Ваших знаний.
+          Результат мы вышлем на Ваш e-mail</p>
+        <button class="modal__test-button" @click="startTest">Начать тест</button>
+      </div>
+    </template>
+  </Modal>
+
+  <Modal v-show="isTestVisible" @close="finishTest">
+    <template #header>
+      <div class="modal__eng-test">
+        <p class="modal__eng-test-topic">Выберите правильный ответ</p>
+        <div class="modal__eng-test-question">
+          <p class="modal__eng-test-question-text">2. I ...... 25 years old.</p>
+        </div>
+        <div class="modal__eng-test-answers">
+          <div class="modal__eng-test-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> a) have</label>
+          </div>
+          <div class="modal__eng-test-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> b) am </label>
+          </div>
+          <div class="modal__eng-test-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> c) has</label>
+          </div>
+          <div class="modal__eng-test-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> d) is</label>
+          </div>
+        </div>
+        <div class="modal__eng-test-buttons">
+          <div class="modal__eng-test-buttons-prev">
+            <img src="@/assets/img/arrow-left.svg" alt="arrow">
+            <p class="modal__eng-test-buttons-prev-text">Предыдущий вопрос</p>
+          </div>
+          <div class="modal__eng-test-buttons-next">
+            <p class="modal__eng-test-buttons-next-text">Следующий вопрос</p>
+            <img src="@/assets/img/arrow-right.svg" alt="arrow">
+          </div>
+        </div>
+      </div>
+
+    </template>
+  </Modal>
 
   <div class="banner__company">
     <div class="banner__company-text-details">
@@ -843,6 +895,8 @@ export default {
       isScrolled: false,
       isMobileModelVisible: false,
       menuActive: false,
+      isModalTestVisible: false,
+      isTestVisible: false,
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -870,6 +924,19 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    startTest() {
+      this.isTestVisible = true;
+    },
+    finishTest() {
+      this.isTestVisible = false;
+      this.isModalTestVisible = false;
+    },
+    openTest() {
+      this.isModalTestVisible = true;
+    },
+    closeTest() {
+      this.isModalTestVisible = false;
+    },
     openMenu() {
       this.isMobileModelVisible = true;
       document.querySelector('.secondary-header').classList.add('removeHeader')
@@ -1711,6 +1778,138 @@ label {
 .container_line-wrap6 {
   display: flex;
   gap: 46px;
+}
+
+
+.modal__test {
+  margin: 5px 0 40px 0;
+  font-family: "Poppins", sans-serif;
+
+  &-topic {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 120%;
+    text-align: center;
+    color: #051d65;
+    margin: 94px 100px 24px 100px;
+  }
+
+  &-text {
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #333;
+    margin: 0 200px 50px 200px;
+  }
+
+  &-button {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    width: 488px;
+    height: 80px;
+    background: #b92831;
+    border: none;
+    margin: 0 100px 0 300px;
+  }
+}
+
+.modal__eng-test {
+  margin: 51px 0 0 50px;
+  font-family: "Poppins", sans-serif;
+
+  &-topic {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+    color: #051d65;
+    margin-bottom: 29px;
+  }
+
+  &-question {
+    border-radius: 10px;
+    width: 993px;
+    height: 94px;
+    background: #dff1f8;
+    margin-bottom: 32px;
+
+    &-text {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 120%;
+      color: #051d65;
+      padding: 30px 0 30px 32px;
+    }
+  }
+
+  &-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    label {
+      font-size: 24px;
+      font-weight: 400;
+      padding-top: 5px;
+    }
+
+    input[type=checkbox] {
+      width: 32px;
+      height: 32px;
+      accent-color: #b92831;
+    }
+
+    &-input {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 118px 0 0 0;
+
+    &-prev {
+      display: flex;
+      gap: 32px;
+      height: 16px;
+      align-items: center;
+
+      &-text {
+        font-weight: 500;
+        font-size: 24px;
+        color: #051d65;
+      }
+    }
+
+    &-next {
+      display: flex;
+      gap: 32px;
+      border: 1px solid #051d65;
+      border-radius: 10px;
+      width: 367px;
+      height: 70px;
+      background: #051d65;
+      align-items: center;
+
+      img {
+        height: 16px;
+      }
+
+      &-text {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 140%;
+        text-align: center;
+        color: #fff;
+        padding: 19px 0 17px 50px;
+      }
+    }
+  }
 }
 
 .banner__company {
@@ -3087,6 +3286,61 @@ iframe {
     right: 10%;
     width: 113px;
     height: 34px;
+  }
+
+  .modal__request-form {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    height: 620px;
+    padding: 8px 8px 16px 8px;
+  }
+
+  .modal__request {
+    width: 100%;
+    height: 207px;
+    border-radius: 10px;
+    padding: 8px 0 16px 8px;
+
+    img {
+      width: 171px;
+      height: 48px;
+    }
+
+    &-topic {
+      font-size: 24px;
+      margin: 63px 82px 8px 0;
+      text-align: left;
+    }
+
+    &-text {
+      font-size: 14px;
+    }
+  }
+
+  .modal__form {
+    margin: 29px 0 0 0;
+    text-align: left;
+
+    .banner__programs-form-name {
+      margin-top: 0;
+    }
+
+    label {
+      padding-left: 0;
+    }
+
+    .banner__programs-form-name-input {
+      margin-left: 0;
+    }
+
+    .banner__programs-form-comment-input {
+      margin-left: 0;
+    }
+
+    .banner__programs-form-button {
+      margin-left: 0;
+    }
   }
 }
 </style>
