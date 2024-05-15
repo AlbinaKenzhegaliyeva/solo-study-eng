@@ -310,7 +310,8 @@
 
     <swiper ref="{swiperRef}" :slidesPerView="4" :centeredSlides="false" :spaceBetween="30" :pagination="{
       type: 'fraction',
-    }" :navigation="true" :modules="modules" :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 } }"
+    }" :navigation="true" :modules="modules"
+      :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 }, 1440: { slidesPerView: 4, spaceBetween: 400 } }"
       class="mySwiper">
       <swiper-slide>
         <div>
@@ -659,10 +660,10 @@
     <p class="banner__videos-topic">Видео-отзывы учеников</p>
     <p class="banner__videos-info-wrapped">Мы собрали отзывы наших выпускников, где они поделились своими успехами</p>
     <div class="banner__videos-slider">
-      <swiper ref="{swiperRef}" :slidesPerView="3" :spaceBetween="800" :pagination="{
+      <swiper ref="{swiperRef}" :slidesPerView="3" :spaceBetween="30" :pagination="{
         type: 'fraction',
       }" :navigation="true" :modules="modules" class="mySwiper"
-        :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 3 } }">
+        :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 3, spaceBetween: 800 }, 1440: { slidesPerView: 3, spaceBetween: 700 } }">
         <swiper-slide>
           <div class="banner__videos-slider-text">
             <iframe width="848px" height="490" src="https://www.youtube.com/embed/MjvtVbU4Hm0"
@@ -871,9 +872,8 @@
       </div>
     </div>
   </footer>
-
-
 </template>
+
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -1025,7 +1025,7 @@ export default {
   display: flex;
   justify-content: space-between;
   background: #1D3062;
-  padding: 16px 100px 16px 100px;
+  padding: 16px 100px;
 
   &__address {
     display: flex;
@@ -1517,7 +1517,7 @@ label {
 }
 
 .banner__teachers {
-  margin: 150px 100px 150px 100px;
+  margin: 150px 100px;
 
   &_about {
     font-family: "Poppins", sans-serif;
@@ -2494,6 +2494,266 @@ iframe {
   margin: 24px 0 0 0;
 }
 
+@media (max-width: 1536px) {
+
+  .header__address-text,
+  .header__contacts-telepone-text,
+  .header__contacts-mail-text {
+    font-size: 16px;
+  }
+
+  .header {
+    padding: 16px 50px;
+  }
+
+  .secondary-header {
+    padding: 0 50px;
+
+    &__school-logo {
+      width: 230px;
+    }
+
+    &__options {
+      gap: 10px;
+    }
+
+    &__school {
+      padding: 23px 30px 18px 0;
+    }
+
+    &__options-text {
+      font-size: 16px;
+    }
+
+    &__button {
+      padding: 36px 0 29px 20px;
+    }
+
+    &__btn {
+      width: 15.21vw;
+    }
+
+  }
+
+  .banner__learn-eng {
+    padding: 0 63px 71px 50px;
+
+    &-pic-london {
+      width: 650px;
+    }
+
+    &-pic-lesson {
+      width: 27.64vw;
+      top: 80px;
+      right: 310px;
+    }
+
+    &-pic-test {
+      width: 27.64vw;
+      top: 580px;
+      right: 5px;
+    }
+
+    h1 {
+      font-size: 50px;
+    }
+
+    &-info-text {
+      font-size: 25px;
+    }
+
+    &-info-btns_red,
+    &-info-btns_blue {
+      width: 280px;
+      font-size: 20px;
+    }
+  }
+
+  .banner__advantages {
+    &_second-row {
+      gap: 210px;
+    }
+
+    &_third-row {
+      gap: 170px;
+    }
+  }
+
+  .banner__programs {
+    padding: 90px 50px 100px 50px;
+
+    h6 {
+      font-size: 30px
+    }
+
+    &-second-eng {
+      font-size: 30px
+    }
+
+    &-all {
+      gap: 50px;
+    }
+
+    &-first {
+      width: 450px;
+
+      &-link-arrow {
+        padding-top: 0;
+      }
+
+      &-link-info-more {
+        padding: 20px 0 24px 200px
+      }
+
+      &-info {
+        font-size: 22px;
+      }
+    }
+
+    &-second {
+      width: 450px;
+
+      &-link-info-more {
+        padding: 20px 0 24px 200px
+      }
+
+      &-eng-info {
+        font-size: 22px;
+      }
+    }
+
+    &-first-base {
+      gap: 170px;
+    }
+
+    &-second-top {
+      gap: 150px;
+    }
+
+    &-fourth-base {
+      gap: 145px;
+    }
+
+    &-form-level {
+      font-size: 28px;
+    }
+
+    &-form-name-input {
+      width: 350px;
+    }
+
+    &-form-comment-input {
+      width: 350px;
+    }
+
+    &-form-button {
+      width: 350px;
+      font-size: 20px;
+    }
+
+    &-form-personal {
+      font-size: 16px;
+    }
+  }
+
+  .banner__teachers {
+    margin: 150px 50px;
+
+    &_about {
+      font-size: 28px;
+      margin: 16px 0 0 0;
+    }
+  }
+
+  .banner__level {
+    padding: 90px 0 90px 50px;
+
+    &-bar-question {
+      gap: 50px;
+    }
+
+    &-bar {
+      width: 800px;
+    }
+
+    &-question-topic {
+      margin: 200px 0 0 0;
+      padding-right: 30px;
+    }
+
+    // &-text {
+    //   p {
+    //     margin-right: 10px !important;
+    //   }
+    // }
+
+    .barcontainer {
+      width: 70px;
+    }
+
+    .container_line {
+      gap: 40px;
+    }
+
+    .container_line-wrap1,
+    .container_line-wrap2,
+    .container_line-wrap3,
+    .container_line-wrap4,
+    .container_line-wrap5,
+    .container_line-wrap6 {
+      gap: 35px;
+    }
+  }
+
+  .banner__company {
+    padding: 170px 102px 166px 50px;
+
+    &-text-details {
+      gap: 120px;
+    }
+
+    &-details {
+      width: 430px;
+    }
+
+    &-details-button {
+      width: 330px;
+    }
+  }
+
+  .banner__price {
+    padding: 70px 200px 70px 200px;
+
+    &-topic {
+      font-size: 50px;
+    }
+
+    &-wrap {
+      padding: 0 200px;
+    }
+  }
+
+  .banner__videos-topic {
+    padding-left: 50px;
+  }
+
+  .banner__videos-info-wrapped {
+    padding-left: 50px;
+  }
+
+  iframe {
+    width: 700px;
+  }
+
+  .footer {
+    padding: 70px 50px 100px 50px;
+
+    &-options {
+      gap: 50px;
+    }
+  }
+}
+
 @media (max-width: 475px) {
   .header {
     display: none;
@@ -2812,8 +3072,8 @@ iframe {
 
   .banner__level-question-button {
     position: absolute;
-    top: 530%;
-    left: 10%;
+    top: 700px;
+    left: 40px;
     width: 310px;
     height: 54px;
     font-size: 16px;
@@ -2852,7 +3112,7 @@ iframe {
 
   .barcontainer {
     border-radius: 7px;
-    width: 47px;
+    width: 47px !important;
     height: 317px;
     margin-right: 31px
   }
@@ -2925,6 +3185,7 @@ iframe {
     text-align: center;
     gap: 40px;
     padding: 32px 0 16px 0;
+    width: auto;
 
     h4 {
       text-align: center;
