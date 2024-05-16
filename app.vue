@@ -1,7 +1,7 @@
 <template>
   <header>
     <SideBar v-show="isMobileModelVisible" @close="closeMenu"></SideBar>
-    <div class="secondary-header__show" v-show="isScrolled" v-if="isMobile">
+    <div class="secondary-header__show" v-show="isScrolled">
       <div class="secondary-header__show-options">
         <img src="@/assets/img/englogo.svg" alt="logo">
         <a href="#" class="secondary-header__show-options-text">Почему мы?</a>
@@ -311,7 +311,7 @@
     <swiper ref="{swiperRef}" :slidesPerView="4" :centeredSlides="false" :spaceBetween="30" :pagination="{
       type: 'fraction',
     }" :navigation="true" :modules="modules"
-      :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 }, 1440: { slidesPerView: 4, spaceBetween: 400 } }"
+      :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 }, 1440: { slidesPerView: 4, spaceBetween: 400 }, 1366: { slidesPerView: 3, spaceBetween: 80 }, 1200: { slidesPerView: 3, spaceBetween: 150 } }"
       class="mySwiper">
       <swiper-slide>
         <div>
@@ -792,7 +792,7 @@
 
   <div class="banner__contacts">
     <div class="banner__contacts-map-info">
-      <img src="@/assets/img/map.svg" alt="map">
+      <img src="@/assets/img/map.svg" alt="map" class="banner__contacts-map-info-img">
       <div class="banner__contacts-info">
         <p class="banner__contacts-info-topic">Как с нами связаться</p>
         <div class="banner__contacts-info-location">
@@ -2494,7 +2494,7 @@ iframe {
   margin: 24px 0 0 0;
 }
 
-@media (max-width: 1536px) {
+@media (max-width: 1440px) {
 
   .header__address-text,
   .header__contacts-telepone-text,
@@ -2532,7 +2532,6 @@ iframe {
     &__btn {
       width: 15.21vw;
     }
-
   }
 
   .banner__learn-eng {
@@ -2754,6 +2753,363 @@ iframe {
   }
 }
 
+@media (max-width: 1366px) {
+  .secondary-header__btn {
+    width: 150px !important;
+    font-size: 16px;
+  }
+
+  .banner__programs-form-name-input {
+    width: 320px !important;
+  }
+
+  .banner__programs-form-comment-input {
+    width: 320px !important;
+  }
+
+  .banner__programs-form-button {
+    width: 320px !important;
+  }
+
+  .banner__level-question-topic {
+    margin: 150px 0 0 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .secondary-header__options-text {
+    font-size: 12px !important;
+  }
+
+  .banner__learn-eng-pic-london {
+    width: 550px !important;
+  }
+
+  .banner__learn-eng h1 {
+    font-size: 40px;
+    margin-top: 50px;
+  }
+
+  .banner__learn-eng-info-text {
+    font-size: 20px !important;
+  }
+
+  .banner__learn-eng-info-btns_red,
+  .banner__learn-eng-info-btns_blue {
+    width: 250px !important;
+  }
+
+  .banner__learn-eng-info-benefits {
+    gap: 20px;
+  }
+
+  .banner__learn-eng-info-benefits_row {
+    gap: 20px;
+  }
+
+  .banner__learn-eng-pic-test {
+    top: 500px !important;
+  }
+
+  .banner__learn-eng-pic-lesson {
+    top: 90px !important;
+  }
+
+  .banner__learn-eng-pic {
+    padding-top: 30px;
+  }
+
+  .banner__advantages {
+    margin: 140px 100px 150px 100px;
+  }
+
+  .banner__programs-second {
+    width: 400px !important;
+  }
+
+  .banner__programs-first {
+    width: 400px !important;
+  }
+
+  .banner__programs-first-base {
+    gap: 100px !important;
+  }
+
+  .banner__programs-second-top {
+    gap: 100px !important;
+  }
+
+  .banner__programs-fourth-base {
+    gap: 90px !important;
+  }
+
+  .banner__programs-first-info {
+    font-size: 18px !important
+  }
+
+  .banner__programs-second-eng-info {
+    font-size: 18px !important
+  }
+
+  .banner__programs-second-link-info-more,
+  .banner__programs-first-link-info-more {
+    font-size: 16px !important;
+    padding: 50px 0 0 180px !important;
+  }
+
+  .banner__programs-first-link-arrow {
+    padding-top: 50px !important;
+  }
+
+  h6,
+  .banner__programs-second-eng {
+    padding: 80px 0 0 24px;
+  }
+
+  .banner__programs-form-level {
+    font-size: 26px !important;
+    padding-right: 60px;
+  }
+
+  .banner__programs-form-name-input,
+  .banner__programs-form-comment-input,
+  .banner__programs-form-button {
+    width: 250px !important;
+  }
+
+  .banner__programs-form-personal {
+    font-size: 12px !important;
+  }
+
+  .banner__advantages_first-row {
+    gap: 100px;
+  }
+
+  .banner__level-question-topic {
+    font-size: 40px;
+  }
+
+  .banner__level-question-more {
+    font-size: 18px;
+    margin: 24px 50px 0 0;
+  }
+
+  .banner__level-question-button {
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+  }
+
+  .banner__company-text-img {
+    width: 550px;
+  }
+
+  .banner__price {
+    padding: 70px 100px !important;
+  }
+
+  .banner__videos-info-wrapped {
+    font-size: 26px;
+    padding: 0;
+  }
+
+  .banner__questions-collapse-ask {
+    gap: 150px;
+  }
+
+  .banner__contacts-map-info-img {
+    width: 600px;
+  }
+
+  .banner__contacts-info {
+    padding-top: 50px;
+  }
+
+  .banner__contacts-info-topic {
+    font-size: 40px;
+  }
+
+  .banner__contacts-map-info-button {
+    margin: 50px 0 50px 0;
+  }
+
+  .footer-options__contacts-button {
+    width: 300px;
+  }
+
+  .footer__child-terms-text,
+  .footer__child-terms-rights {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .header__address-text,
+  .header__contacts-telepone-text,
+  .header__contacts-mail-text {
+    font-size: 14px;
+  }
+
+  .header__contacts {
+    gap: 20px;
+  }
+
+  .secondary-header__school-logo {
+    width: 200px;
+  }
+
+  .secondary-header__options-text {
+    font-size: 10px !important;
+  }
+
+  .banner__learn-eng-info {
+    padding-top: 200px;
+  }
+
+  .banner__learn-eng h1 {
+    font-size: 35px;
+    margin-top: 0;
+  }
+
+  .banner__learn-eng-pic-london {
+    width: 400px !important;
+  }
+
+  .banner__learn-eng-pic-lesson {
+    right: 200px !important;
+  }
+
+  .banner__learn-eng-pic-test {
+    top: 380px !important;
+  }
+
+  .banner__advantages_second-row,
+  .banner__advantages_third-row {
+    gap: 100px;
+  }
+
+  .banner__programs-all {
+    flex-direction: column;
+  }
+
+  .banner__programs-form {
+    padding: 0 200px 0 350px;
+    align-items: center;
+  }
+
+  .banner__programs-form-name-input,
+  .banner__programs-form-comment-input,
+  .banner__programs-form-button {
+    width: 350px !important;
+  }
+
+  .banner__level-bar {
+    width: 500px;
+  }
+
+  .container_line-wrap {
+    flex-direction: column;
+  }
+
+  .container {
+    transform: rotate(90deg);
+    height: 343px;
+    width: 450px;
+    margin: 100px 0 0 0px;
+  }
+
+  .barcontainer {
+    border-radius: 7px;
+    width: 47px !important;
+    height: 317px;
+    margin-right: 31px
+  }
+
+  .banner__level .container_line-wrap1,
+  .banner__level .container_line-wrap2,
+  .banner__level .container_line-wrap3,
+  .banner__level .container_line-wrap4,
+  .banner__level .container_line-wrap5,
+  .banner__level .container_line-wrap6 {
+    gap: 5px;
+  }
+
+  .banner__level .container_line {
+    gap: 20px;
+  }
+
+  .banner__level-text {
+    display: none;
+  }
+
+  .banner__company-text-details {
+    flex-direction: column;
+  }
+
+  .banner__company-details {
+    margin-left: 300px;
+    width: 450px;
+  }
+
+  .banner__company-details-button {
+    margin-bottom: 30px;
+  }
+
+  .banner__price {
+    padding: 70px 30px !important;
+  }
+
+  .banner__videos-info-wrapped {
+    padding-left: 50px;
+  }
+
+  .banner__questions {
+    padding: 200px 30px;
+  }
+
+  .banner__questions-collapse-ask {
+    gap: 70px;
+  }
+
+  .banner__contacts {
+    padding: 0 30px;
+  }
+
+  .banner__contacts-map-info {
+    gap: 50px;
+  }
+
+  .footer {
+    padding: 70px 50px 100px 30px;
+  }
+
+  .footer-options__logo-school {
+    width: 200px;
+  }
+
+  .footer-options__navigation-text-bold {
+    font-size: 25px;
+  }
+
+  .footer-options__navigation-text {
+    font-size: 20px;
+  }
+
+  .footer-options__contacts-text {
+    font-size: 16px;
+  }
+
+  .footer-options__contacts-button {
+    width: 250px;
+  }
+
+  .footer__child-terms {
+    gap: 500px;
+  }
+  
+}
+
 @media (max-width: 475px) {
   .header {
     display: none;
@@ -2798,25 +3154,26 @@ iframe {
   }
 
   .banner__learn-eng-pic-london {
-    width: 298px;
-    height: 334px;
+    width: 298px !important;
+    height: 334px !important;
   }
 
   .banner__learn-eng-pic-lesson {
     width: 214px;
-    top: 10%;
-    right: 35%;
+    top: 10% !important;
+    right: 35% !important;
   }
 
   .banner__learn-eng-pic-test {
     width: 214px;
-    top: 68%;
+    top: 68% !important;
     right: 0;
     left: 38%;
   }
 
   h1 {
-    font-size: 32px;
+    font-size: 6.74vw !important;
+    margin-top: 50px !important;
   }
 
   .banner__learn-eng-info {
@@ -2932,7 +3289,7 @@ iframe {
 
   .banner__programs-first,
   .banner__programs-second {
-    width: 343px;
+    width: 343px !important;
     height: 278px;
   }
 
@@ -2957,7 +3314,7 @@ iframe {
 
   h6,
   .banner__programs-second-eng {
-    font-size: 24px;
+    font-size: 24px !important;
     padding: 70px 8px 0 16px;
   }
 
@@ -2969,12 +3326,16 @@ iframe {
 
   .banner__programs-first-link-info-more,
   .banner__programs-second-link-info-more {
-    font-size: 16px;
-    padding: 24px 0 24px 125px;
+    font-size: 16px !important;
+    padding: 24px 0 24px 125px !important;
   }
 
   .banner__programs-first-link-arrow {
-    padding-top: 0;
+    padding-top: 0 !important;
+  }
+
+  .banner__programs-form {
+    padding: 0;
   }
 
   .banner__programs-form-level {
@@ -3186,6 +3547,7 @@ iframe {
     gap: 40px;
     padding: 32px 0 16px 0;
     width: auto;
+    margin-left: 0;
 
     h4 {
       text-align: center;
@@ -3214,7 +3576,7 @@ iframe {
   }
 
   .banner__price {
-    padding: 50px 0;
+    padding: 50px 0 !important;
   }
 
   .banner__price-topic {
