@@ -584,7 +584,7 @@
     </div>
 
     <div class="banner__price-blocks-mobile" v-show="isMobile">
-      <swiper ref="{swiperRef}" :slidesPerView="1" :spaceBetween="300" :pagination="{
+      <swiper ref="{swiperRef}" :slidesPerView="1" :pagination="{
         type: 'fraction',
       }" :navigation="true" :modules="modules" class="mySwiper">
         <swiper-slide>
@@ -682,7 +682,7 @@
       <swiper ref="{swiperRef}" :slidesPerView="3" :spaceBetween="30" :pagination="{
         type: 'fraction',
       }" :navigation="true" :modules="modules" class="mySwiper"
-        :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 3, spaceBetween: 800 }, 1440: { slidesPerView: 3, spaceBetween: 700 } }">
+        :breakpoints="{ 300: { slidesPerView: 1, spaceBetween: 0 }, 1920: { slidesPerView: 3, spaceBetween: 800 }, 1440: { slidesPerView: 3, spaceBetween: 700 } }">
         <swiper-slide>
           <div class="banner__videos-slider-text">
             <iframe width="848px" height="490" src="https://www.youtube.com/embed/MjvtVbU4Hm0"
@@ -742,7 +742,7 @@
     <p class="banner__review-topic">Отзывы учеников</p>
     <swiper ref="{swiperRef}" :slidesPerView="1" :spaceBetween="300" :pagination="{
       type: 'fraction',
-    }" :navigation="true" :modules="modules" class="mySwiper">
+    }" :navigation="true" :modules="modules" :breakpoints="{ 300: { slidesPerView: 1, spaceBetween: 0 }}" class="mySwiper">
       <swiper-slide>
         <div class="banner__review-item">
           <div class="banner__review-item-name-date">
@@ -1233,6 +1233,7 @@ h1 {
 
 .banner__advantages {
   margin: 140px 297px 150px 267px;
+  background-color: #fff;
 
   &_first-row {
     margin-top: 120px;
@@ -1957,6 +1958,7 @@ label {
 
 .banner__company {
   padding: 170px 102px 166px 100px;
+  background-color: #fff;
 
   &-text-details {
     display: flex;
@@ -2096,6 +2098,7 @@ label {
 
 .banner__videos {
   padding: 150px 0 0 0;
+  background-color: #fff;
 
   &-topic {
     font-family: "Poppins", sans-serif;
@@ -2700,6 +2703,7 @@ iframe {
 
   .banner__teachers {
     margin: 150px 50px;
+    background-color: #fff;
 
     &_about {
       font-size: 28px;
@@ -3435,17 +3439,14 @@ iframe {
     font-weight: 700;
     font-size: 24px;
     margin: 90px 0 0 0;
-    padding: 0 100px;
   }
 
   label {
     font-size: 20px;
-    padding: 0 100px;
   }
 
   .banner__programs-form-name-input {
     width: 343px;
-    margin: 0 100px;
   }
 
   .banner__programs-form-name-input::placeholder {
@@ -3454,7 +3455,6 @@ iframe {
 
   .banner__programs-form-comment-input {
     width: 343px;
-    margin: 0 100px;
     padding-right: 30px;
   }
 
@@ -3464,7 +3464,6 @@ iframe {
   }
 
   .banner__programs-form-button {
-    margin: 32px 100px 0 100px;
     width: 343px;
     height: 60px;
     font-weight: 400;
@@ -3472,7 +3471,7 @@ iframe {
   }
 
   .banner__programs-form-personal {
-    margin: 16px 100px 62px 100px;
+    margin: 16px 0 62px 0;
     font-size: 16px;
   }
 
@@ -3546,8 +3545,11 @@ iframe {
   .container {
     transform: rotate(90deg);
     height: 343px;
-    width: 450px;
-    margin: 100px 0 0 0px;
+    width: 112.50vw;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 90px;
   }
 
   .barcontainer {
@@ -4091,10 +4093,6 @@ iframe {
 
     label {
       padding-left: 0;
-    }
-
-    .banner__programs-form-name-input {
-      margin-left: 0;
     }
 
     .banner__programs-form-comment-input {
