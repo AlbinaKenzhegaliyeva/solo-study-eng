@@ -287,7 +287,7 @@
                     </div>
                   </div>
                   <div class="banner__programs-form-btn">
-                    <button class="banner__programs-form-button" @click="showModal">Получить консультацию</button>
+                    <button class="banner__programs-form-button" @click="openApplication">Получить консультацию</button>
                   </div>
                   <div class="modal__form-terms">
                     <p class="modal__form-terms-text">Нажимая на “Получить консультацию”, я даю согласие на обработку
@@ -303,6 +303,18 @@
       </div>
     </div>
   </div>
+
+  <Modal v-show="isModalApplicationVisible" @close="closeApplication">
+    <template #header>
+      <div class="modal__application">
+        <img src="@/assets/img/school2.svg" alt="logo">
+        <p class="modal__application-topic">Спасибо за заявку!</p>
+        <p class="modal__application-text">Ждите звонка от наших менеджеров в ближайшее время</p>
+        <button class="modal__application-button" @click="closeApplication">На главную</button>
+      </div>
+    </template>
+  </Modal>
+
   <div class="banner__teachers">
     <h4>Преподаватели “SoLo English”</h4>
     <p class="banner__teachers_about">В нашей школе преподают 13 преподавателей с большим стажем и наличием
@@ -917,6 +929,7 @@ export default {
       menuActive: false,
       isModalTestVisible: false,
       isTestVisible: false,
+      isModalApplicationVisible: false,
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -944,6 +957,13 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    openApplication() {
+      this.isModalApplicationVisible = true;
+    },
+    closeApplication() {
+      this.isModalApplicationVisible = false;
+      this.isModalVisible = false;
+    },
     startTest() {
       this.isTestVisible = true;
     },
@@ -1825,6 +1845,44 @@ label {
   gap: 46px;
 }
 
+.modal__application {
+  margin: 5px 0 40px 0;
+  padding: 24px 0 0 24px;
+  background: #051d65;
+  font-family: "Poppins", sans-serif;
+  border-radius: 16px;
+
+  &-topic {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+    margin: 94px 100px 24px 100px;
+  }
+
+  &-text {
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #fff;
+    margin: 0 200px 50px 200px;
+  }
+
+  &-button {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    width: 488px;
+    height: 80px;
+    background: #b92831;
+    border: none;
+    margin: 0 100px 0 300px;
+  }
+}
 
 .modal__test {
   margin: 5px 0 40px 0;
@@ -3483,7 +3541,7 @@ iframe {
   }
 
   .banner__programs-form-name-input {
-    width: 343px;
+    width: 100% !important;
   }
 
   .banner__programs-form-name-input::placeholder {
@@ -3491,7 +3549,7 @@ iframe {
   }
 
   .banner__programs-form-comment-input {
-    width: 343px;
+    width: 100% !important;
     padding-right: 30px;
   }
 
@@ -3501,7 +3559,7 @@ iframe {
   }
 
   .banner__programs-form-button {
-    width: 343px;
+    width: 100% !important;
     height: 60px;
     font-weight: 400;
     font-size: 18px;
