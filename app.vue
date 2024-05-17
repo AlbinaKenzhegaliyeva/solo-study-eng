@@ -441,13 +441,13 @@
           </div>
         </div>
 
-        <div class="banner__level-text">
-          <p style="margin-right: 45px;">Beginner</p>
-          <p style="margin-right: 25px;">Elementary</p>
-          <p style="margin-left: 10px;">Pre-Intermediate</p>
-          <p style="margin-left: 10px;">Upper Intermediate</p>
-          <p style="margin-right: 35px">Advanced</p>
-          <p style="margin-right: 20px;">Proficiency</p>
+        <div class="banner__level-text" v-if="!isMobile">
+          <p class="banner__level-text1">Beginner</p>
+          <p class="banner__level-text2">Elementary</p>
+          <p class="banner__level-text3">Pre-Intermediate</p>
+          <p class="banner__level-text4">Upper Intermediate</p>
+          <p class="banner__level-text5">Advanced</p>
+          <p class="banner__level-text6">Proficiency</p>
         </div>
       </div>
 
@@ -1627,6 +1627,30 @@ label {
     text-align: left;
   }
 
+  &-text1 {
+    margin-right: 45px;
+  }
+
+  &-text2 {
+    margin-right: 25px;
+  }
+
+  &-text3 {
+    margin-left: 10px;
+  }
+
+  &-text4 {
+    margin-left: 10px;
+  }
+
+  &-text5 {
+    margin-right: 35px;
+  }
+
+  &-text6 {
+    margin-right: 20px;
+  }
+
   &-bar {
     border-radius: 20px;
     width: 993px;
@@ -2699,11 +2723,33 @@ iframe {
       padding-right: 30px;
     }
 
-    // &-text {
-    //   p {
-    //     margin-right: 10px !important;
-    //   }
-    // }
+    &-text {
+      font-size: 18px;
+    }
+
+    &-text1 {
+      margin-right: 45px;
+    }
+
+    &-text2 {
+      margin-right: 25px;
+    }
+
+    &-text3 {
+      margin-left: 10px;
+    }
+
+    &-text4 {
+      margin-left: 20px;
+    }
+
+    &-text5 {
+      margin-right: 35px;
+    }
+
+    &-text6 {
+      margin-right: 20px;
+    }
 
     .barcontainer {
       width: 70px;
@@ -3023,8 +3069,41 @@ iframe {
     width: 350px !important;
   }
 
-  .banner__level-bar {
-    width: 500px;
+  .banner__level {
+    &-bar {
+      width: 500px;
+      height: auto;
+    }
+
+    &-text {
+     font-size: 12px;
+     margin: 20px 0 0 20px;
+    }
+
+    &-text1 {
+      margin-right: 25px;
+    }
+
+    &-text2 {
+      margin-right: 15px;
+    }
+
+    &-text3 {
+      margin-left: 5px;
+    }
+
+    &-text4 {
+      margin-left: 5px;
+    }
+
+    &-text5 {
+      margin-right: 15px;
+    }
+
+    &-text6 {
+      margin-right: 20px;
+    }
+
   }
 
   .container_line-wrap {
@@ -3032,17 +3111,16 @@ iframe {
   }
 
   .container {
-    transform: rotate(90deg);
     height: 343px;
     width: 450px;
-    margin: 100px 0 0 0px;
+    margin: 100px 0 0 30px;
   }
 
   .barcontainer {
     border-radius: 7px;
     width: 47px !important;
     height: 317px;
-    margin-right: 31px
+    margin-right: 31px;
   }
 
   .banner__level .container_line-wrap1,
@@ -3056,10 +3134,6 @@ iframe {
 
   .banner__level .container_line {
     gap: 20px;
-  }
-
-  .banner__level-text {
-    display: none;
   }
 
   .banner__company-text-details {
