@@ -359,11 +359,12 @@
     </swiper>
     <p class="append-buttons"></p>
   </div>
+
   <div class="banner__level">
     <div class="banner__level-bar-question">
       <div class="banner__level-bar">
         <div class="container">
-          <div class="container_line">
+          <div class="container_line" v-if="!isMobile">
             <div class="container_line-wrap1">
               <p class="bar_level">A1</p>
               <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info">
@@ -391,34 +392,52 @@
           </div>
 
           <div class="barcontainer">
+            <p class="bar_level" v-if="isMobile">A1</p>
             <div class="bar_red bar" style="height:30%">
               <div class="hide"><img src="@/assets/img/beginner.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text1" v-if="isMobile">Beginner</p>
           </div>
           <div class="barcontainer">
+            <p class="bar_level" v-if="isMobile">A2</p>
             <div class="bar_orange bar" style="height:40%">
               <div class="hide"><img src="@/assets/img/elementary.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text2" v-if="isMobile">Elementary</p>
           </div>
           <div class="barcontainer">
+            <p class="bar_level" v-if="isMobile">B1</p>
             <div class="bar_yellow bar" style="height:44%">
               <div class="hide"><img src="@/assets/img/beginner.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text3" v-if="isMobile">Pre-Intermediate</p>
           </div>
           <div class="barcontainer">
+            <p class="bar_level" v-if="isMobile">B2</p>
             <div class="bar_green bar" style="height:50%">
               <div class="hide"><img src="@/assets/img/elementary.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text4" v-if="isMobile">Upper Intermediate</p>
           </div>
           <div class="barcontainer">
+            <p class="bar_level" v-if="isMobile">C1</p>
             <div class="bar_blue bar" style="height:65%">
               <div class="hide"><img src="@/assets/img/beginner.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text5" v-if="isMobile">Advanced</p>
           </div>
           <div class="barcontainer" style="margin-right: 0;">
+            <p class="bar_level" v-if="isMobile">C2</p>
             <div class="bar_violet bar" style="height:80%">
               <div class="hide"><img src="@/assets/img/elementary.svg" alt="beginner"></div>
             </div>
+            <img src="@/assets/img/moreinfo.svg" alt="info" class="more-info" v-if="isMobile">
+            <p class="bar_level-text6" v-if="isMobile">Proficiency</p>
           </div>
         </div>
 
@@ -3107,7 +3126,7 @@ iframe {
   .footer__child-terms {
     gap: 500px;
   }
-  
+
 }
 
 @media (max-width: 475px) {
@@ -3450,20 +3469,6 @@ iframe {
     margin: 16px 16px 0 0;
   }
 
-  .banner__level-text {
-    flex-direction: column;
-    gap: 60px;
-    margin: 0;
-    font-size: 14px;
-    position: absolute;
-    top: 18%;
-    left: 20%;
-  }
-
-  .container_line-wrap {
-    flex-direction: column;
-  }
-
   .container {
     transform: rotate(90deg);
     height: 343px;
@@ -3475,26 +3480,15 @@ iframe {
     border-radius: 7px;
     width: 47px !important;
     height: 317px;
-    margin-right: 31px
-  }
-
-  .container_line-wrap1,
-  .container_line-wrap2,
-  .container_line-wrap3,
-  .container_line-wrap4,
-  .container_line-wrap5,
-  .container_line-wrap6 {
-    position: relative;
+    margin-right: 31px;
+    margin-top: 20px;
   }
 
   .bar_level {
-    display: flex;
-    font-size: 19px;
     transform: rotate(-90deg);
     position: absolute;
-    top: 10%;
-    right: 50%;
-    z-index: 1000;
+    top: 320px;
+    padding-top: 5px;
   }
 
   .more-info {
@@ -3502,14 +3496,82 @@ iframe {
     height: 16px;
     transform: rotate(-90deg);
     position: absolute;
-    top: 15%;
-    bottom: 5%;
-    z-index: 1000;
+    top: 10px;
+    right: 15px;
   }
 
-  .container_line {
-    position: relative;
-    gap: 80px;
+  .bar_level-text1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 280px;
+    left: 30px;
+  }
+
+  .bar_level-text2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 270px;
+    left: 20px;
+  }
+
+  .bar_level-text3 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 250px;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .bar_level-text4 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 230px;
+    bottom: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .bar_level-text5 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 270px;
+    left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .bar_level-text6 {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 120%;
+    color: #333;
+    transform: rotate(-90deg);
+    position: absolute;
+    top: 270px;
+    left: 20px;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .banner__company {
@@ -3735,6 +3797,10 @@ iframe {
     width: 343px;
     height: 60px;
     font-size: 18px;
+  }
+
+  .banner__contacts-map-info-img {
+    width: 100%;
   }
 
   .footer {
