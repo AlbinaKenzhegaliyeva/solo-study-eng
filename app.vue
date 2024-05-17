@@ -742,7 +742,8 @@
     <p class="banner__review-topic">Отзывы учеников</p>
     <swiper ref="{swiperRef}" :slidesPerView="1" :spaceBetween="300" :pagination="{
       type: 'fraction',
-    }" :navigation="true" :modules="modules" :breakpoints="{ 300: { slidesPerView: 1, spaceBetween: 0 }}" class="mySwiper">
+    }" :navigation="true" :modules="modules" :breakpoints="{ 300: { slidesPerView: 1, spaceBetween: 0 } }"
+      class="mySwiper">
       <swiper-slide>
         <div class="banner__review-item">
           <div class="banner__review-item-name-date">
@@ -2552,6 +2553,15 @@ iframe {
     padding: 16px 50px;
   }
 
+  .secondary-header__show {
+    padding: 24px 50px 17px 50px;
+
+    &-options {
+      gap: 20px;
+      white-space: nowrap;
+    }
+  }
+
   .secondary-header {
     padding: 0 50px;
 
@@ -2684,15 +2694,15 @@ iframe {
     }
 
     &-form-name-input {
-      width: 350px;
+      width: 100%;
     }
 
     &-form-comment-input {
-      width: 350px;
+      width: 100%;
     }
 
     &-form-button {
-      width: 350px;
+      width: 100%;
       font-size: 20px;
     }
 
@@ -2846,6 +2856,20 @@ iframe {
 }
 
 @media (max-width: 1200px) {
+  .secondary-header__show {
+    padding: 24px 30px 17px 30px;
+
+    &-options {
+      gap: 10px;
+      white-space: nowrap;
+
+      a {
+        padding-top: 10px;
+        font-size: 17px;
+      }
+    }
+  }
+
   .secondary-header__options-text {
     font-size: 12px !important;
   }
@@ -3013,6 +3037,19 @@ iframe {
 }
 
 @media (max-width: 1024px) {
+  .secondary-header__show {
+    padding: 24px 10px 17px 10px;
+
+    &-options {
+      gap: 10px;
+      white-space: nowrap;
+
+      a {
+        padding-top: 10px;
+        font-size: 14px;
+      }
+    }
+  }
 
   .header__address-text,
   .header__contacts-telepone-text,
@@ -3080,8 +3117,8 @@ iframe {
     }
 
     &-text {
-     font-size: 12px;
-     margin: 20px 0 0 20px;
+      font-size: 12px;
+      margin: 20px 0 0 20px;
     }
 
     &-text1 {
@@ -3292,10 +3329,9 @@ iframe {
 
   .banner__learn-eng-info-btns_red,
   .banner__learn-eng-info-btns_blue {
-    max-width: 343px;
-    height: 60px;
+    width: 100% !important;
+    height: 60px !important;
     font-size: 18px;
-    font-weight: 400;
   }
 
   .banner__learn-eng-info-benefits {
@@ -3439,6 +3475,7 @@ iframe {
     font-weight: 700;
     font-size: 24px;
     margin: 90px 0 0 0;
+    padding: 0;
   }
 
   label {
