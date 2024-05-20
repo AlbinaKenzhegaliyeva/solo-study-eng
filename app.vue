@@ -325,7 +325,7 @@
     <swiper ref="{swiperRef}" :slidesPerView="4" :centeredSlides="false" :spaceBetween="30" :pagination="{
       type: 'fraction',
     }" :navigation="true" :modules="modules"
-      :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 }, 1440: { slidesPerView: 4, spaceBetween: 400 }, 1366: { slidesPerView: 3, spaceBetween: 80 }, 1200: { slidesPerView: 3, spaceBetween: 150 } }"
+      :breakpoints="{ 300: { slidesPerView: 1 }, 1920: { slidesPerView: 4 }, 1440: { slidesPerView: 4, spaceBetween: 400 }, 1366: { slidesPerView: 3, spaceBetween: 80 }, 1200: { slidesPerView: 3, spaceBetween: 150 }, 1024: { slidesPerView: 2, spaceBetween: 100 } }"
       class="mySwiper">
       <swiper-slide>
         <div>
@@ -3337,6 +3337,13 @@ iframe {
     }
   }
 
+  .banner__learn-eng-info-benefits_scheduled-text,
+  .banner__learn-eng-info-benefits_results-text,
+  .banner__learn-eng-info-benefits_literature-text,
+  .banner__learn-eng-info-benefits_learning-text {
+    font-size: 16px;
+  }
+  
   .header__address-text,
   .header__contacts-telepone-text,
   .header__contacts-mail-text {
@@ -3381,12 +3388,24 @@ iframe {
     gap: 100px;
   }
 
+  .banner__programs_row-one {
+    margin: 60px 0 0 50px;
+  }
+
+  .banner__programs_row-two {
+    margin: 24px 0 0 50px;
+  }
+
   .banner__programs-all {
     flex-direction: column;
   }
 
+  .banner__programs-form-level {
+    font-size: 30px !important;
+  }
+
   .banner__programs-form {
-    padding: 0 200px 0 350px;
+    padding: 0 50px 0 50px;
     align-items: center;
   }
 
@@ -3468,12 +3487,12 @@ iframe {
   }
 
   .banner__company-details {
-    margin-left: 300px;
-    width: 450px;
+    width: 100%;
   }
 
   .banner__company-details-button {
     margin-bottom: 30px;
+    width: 100%;
   }
 
   .banner__price {
@@ -3482,6 +3501,10 @@ iframe {
 
   .banner__videos-info-wrapped {
     padding-left: 50px;
+  }
+
+  .banner__review {
+    padding: 90px 150px 80px 150px;
   }
 
   .banner__questions {
@@ -3699,7 +3722,7 @@ iframe {
   .banner__programs_row-one {
     flex-direction: column;
     gap: 16px;
-    margin-top: 32px;
+    margin: 32px 0 0 0;
     align-items: center;
   }
 
@@ -3707,7 +3730,7 @@ iframe {
     flex-direction: column;
     gap: 16px;
     align-items: center;
-    margin-top: 16px;
+    margin: 16px 0 0 0;
   }
 
   .banner__programs-first,
