@@ -5,8 +5,9 @@
         <header :class="{'modal-header': true, 'modal-header-new-style': applyHeaderNewStyle}">
           <slot name="header"></slot>
           <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close" v-if="!showWhiteCloseIcon">
-          <img src="@/assets/img/close-white.svg" alt="close" @click="close" class="header__close_white">
+          <img src="@/assets/img/close-white.svg" alt="close" @click="close" class="header__close_white" v-if="!showTestCloseIcon">
           <img src="@/assets/img/close_white_lg.svg" alt="close" @click="close" class="header__close_white-lg" v-if="showWhiteCloseIcon">
+          <img src="@/assets/img/close-test.svg" alt="close" @click="close" class="header__close_test-mb" v-if="showTestCloseIcon">
         </header>
         <section class="modal-body">
           <slot name="body"></slot>
@@ -28,6 +29,10 @@ export default {
       default: false
     },
     applyHeaderNewStyle: {
+      type: Boolean,
+      default: false
+    },
+    showTestCloseIcon: {
       type: Boolean,
       default: false
     },
@@ -72,7 +77,7 @@ export default {
   flex-direction: column;
   border-radius: 20px;
   width: 1111px;
-  height: 728px;
+  margin: 0 20px;
 }
 
 .modal-header,
@@ -123,5 +128,11 @@ export default {
 
 .modal-header-new-style {
   padding: 16px 16px 0 16px;
+}
+
+.header__close_test-mb {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 </style>

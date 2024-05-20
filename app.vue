@@ -4,15 +4,15 @@
     <div class="secondary-header__show" v-show="isScrolled">
       <div class="secondary-header__show-options">
         <img src="@/assets/img/englogo.svg" alt="logo">
-        <a href="#" class="secondary-header__show-options-text">Почему мы?</a>
-        <a href="#" class="secondary-header__show-options-text">Услуги</a>
-        <a href="#" class="secondary-header__show-options-text">Преподаватели</a>
-        <a href="#" class="secondary-header__show-options-text">Пройти тест</a>
-        <a href="#" class="secondary-header__show-options-text">О компании</a>
-        <a href="#" class="secondary-header__show-options-text">Стоимость</a>
-        <a href="#" class="secondary-header__show-options-text">Отзывы</a>
-        <a href="#" class="secondary-header__show-options-text">Вопросы</a>
-        <button class="secondary-header__btn">Оставить заявку</button>
+        <a href="#why" class="secondary-header__show-options-text">Почему мы?</a>
+        <a href="#programs" class="secondary-header__show-options-text">Услуги</a>
+        <a href="#teachers" class="secondary-header__show-options-text">Преподаватели</a>
+        <a href="#test" class="secondary-header__show-options-text">Пройти тест</a>
+        <a href="#company" class="secondary-header__show-options-text">О компании</a>
+        <a href="#price" class="secondary-header__show-options-text">Стоимость</a>
+        <a href="#review" class="secondary-header__show-options-text">Отзывы</a>
+        <a href="#questions" class="secondary-header__show-options-text">Вопросы</a>
+        <button class="secondary-header__btn" @click="showModal">Оставить заявку</button>
       </div>
     </div>
     <div class="header">
@@ -37,17 +37,17 @@
         <img src="@/assets/img/menu.svg" alt="menu" class="burger-menu-icon" v-show="isMobile" @click="openMenu">
       </div>
       <div class="secondary-header__options">
-        <a href="#" class="secondary-header__options-text">Почему мы?</a>
-        <a href="#" class="secondary-header__options-text">Услуги</a>
-        <a href="#" class="secondary-header__options-text">Преподаватели</a>
-        <a href="#" class="secondary-header__options-text">Пройти тест</a>
-        <a href="#" class="secondary-header__options-text">О компании</a>
-        <a href="#" class="secondary-header__options-text">Стоимость</a>
-        <a href="#" class="secondary-header__options-text">Отзывы</a>
-        <a href="#" class="secondary-header__options-text">Вопросы</a>
+        <a href="#why" class="secondary-header__options-text">Почему мы?</a>
+        <a href="#programs" class="secondary-header__options-text">Услуги</a>
+        <a href="#teachers" class="secondary-header__options-text">Преподаватели</a>
+        <a href="#test" class="secondary-header__options-text">Пройти тест</a>
+        <a href="#company" class="secondary-header__options-text">О компании</a>
+        <a href="#price" class="secondary-header__options-text">Стоимость</a>
+        <a href="#review" class="secondary-header__options-text">Отзывы</a>
+        <a href="#questions" class="secondary-header__options-text">Вопросы</a>
       </div>
       <div class="secondary-header__button">
-        <button class="secondary-header__btn">Оставить заявку</button>
+        <button class="secondary-header__btn" @click="showModal">Оставить заявку</button>
       </div>
     </div>
   </header>
@@ -58,8 +58,8 @@
       <p class="banner__learn-eng-info-text">Деловой английский по авторской методологии у сертифицированных
         преподавателей</p>
       <div class="banner__learn-eng-info-btns">
-        <button class="banner__learn-eng-info-btns_red">Получить консультацию</button>
-        <button class="banner__learn-eng-info-btns_blue">Узнать свой уровень</button>
+        <button class="banner__learn-eng-info-btns_red" @click="showModal">Получить консультацию</button>
+        <button class="banner__learn-eng-info-btns_blue" @click="openTest">Узнать свой уровень</button>
       </div>
       <div class="banner__learn-eng-info-benefits">
         <div class="banner__learn-eng-info-benefits_row">
@@ -90,7 +90,7 @@
       <img src="@/assets/img/london.svg" alt="London" class="banner__learn-eng-pic-london">
     </div>
   </div>
-  <div class="banner__advantages">
+  <div id="why" class="banner__advantages">
     <h2>Почему нужно обучаться именно у нас?</h2>
     <div class="banner__advantages_first-row">
       <div class="banner__advantages_first-row-col1">
@@ -159,7 +159,7 @@
     </div>
   </div>
 
-  <div class="banner__programs">
+  <div class="banner__programs" id="programs">
     <h4>Наши программы</h4>
     <div class="banner__programs-all">
       <div>
@@ -290,7 +290,8 @@
                     <button class="banner__programs-form-button" @click="openApplication">Получить консультацию</button>
                   </div>
                   <div class="modal__form-terms">
-                    <p class="modal__form-terms-text">Нажимая на “Получить консультацию”, я даю согласие на обработку
+                    <p class="modal__form-terms-text" v-if="!isMobile">Нажимая на “Получить консультацию”, я даю
+                      согласие на обработку
                       персональных данных</p>
                   </div>
                 </div>
@@ -304,7 +305,8 @@
     </div>
   </div>
 
-  <Modal v-show="isModalApplicationVisible" @close="closeApplication" :showWhiteCloseIcon="showWhiteCloseIcon" :applyHeaderNewStyle="applyHeaderNewStyle">
+  <Modal v-show="isModalApplicationVisible" @close="closeApplication" :showWhiteCloseIcon="showWhiteCloseIcon"
+    :applyHeaderNewStyle="applyHeaderNewStyle">
     <template #header>
       <div class="modal__application">
         <img src="@/assets/img/school2.svg" alt="logo">
@@ -315,7 +317,7 @@
     </template>
   </Modal>
 
-  <div class="banner__teachers">
+  <div class="banner__teachers" id="teachers">
     <h4>Преподаватели “SoLo English”</h4>
     <p class="banner__teachers_about">В нашей школе преподают 13 преподавателей с большим стажем и наличием
       международного сертификата</p>
@@ -372,7 +374,7 @@
     <p class="append-buttons"></p>
   </div>
 
-  <div class="banner__level">
+  <div class="banner__level" id="test">
     <div class="banner__level-bar-question">
       <div class="banner__level-bar">
         <div class="container">
@@ -471,8 +473,8 @@
     </div>
   </div>
 
-  <Modal v-show="isModalTestVisible" @close="closeTest">
-    <template #header>
+  <Modal v-show="isModalTestVisible" @close="closeTest" :showTestCloseIcon="showTestCloseIcon">
+    <template #header v-if="!isMobile">
       <div class="modal__test">
         <img src="@/assets/img/school.svg" alt="logo">
         <p class="modal__test-topic">Тест на определение уровня английского языка</p>
@@ -481,10 +483,20 @@
         <button class="modal__test-button" @click="startTest">Начать тест</button>
       </div>
     </template>
+
+    <template #header v-if="isMobile">
+      <div class="modal__test_mb">
+        <img src="@/assets/img/school.svg" alt="logo">
+        <p class="modal__test-topic_mb">Тест на определение уровня английского языка</p>
+        <p class="modal__test-text_mb">Сейчас Вы пройдете тест из 20 вопросов, который определит уровень Ваших знаний.
+          Результат мы вышлем на Ваш e-mail</p>
+        <button class="modal__test-button_mb" @click="startTest">Начать тест</button>
+      </div>
+    </template>
   </Modal>
 
-  <Modal v-show="isTestVisible" @close="finishTest">
-    <template #header>
+  <Modal v-show="isTestVisible" @close="finishTest" :showTestCloseIcon="showTestCloseIcon">
+    <template #header v-if="!isMobile">
       <div class="modal__eng-test">
         <p class="modal__eng-test-topic">Выберите правильный ответ</p>
         <div class="modal__eng-test-question">
@@ -519,11 +531,46 @@
           </div>
         </div>
       </div>
+    </template>
 
+    <template #header v-if="isMobile">
+      <div class="modal__eng-test_mb">
+        <img src="@/assets/img/school.svg" alt="logo">
+        <p class="modal__eng-test_mb-topic">Выберите правильный ответ</p>
+        <div class="modal__eng-test_mb-question">
+          <p class="modal__eng-test_mb-question-text">2. I ...... 25 years old.</p>
+        </div>
+        <div class="modal__eng-test_mb-answers">
+          <div class="modal__eng-test_mb-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> a) have</label>
+          </div>
+          <div class="modal__eng-test_mb-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> b) am </label>
+          </div>
+          <div class="modal__eng-test_mb-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> c) has</label>
+          </div>
+          <div class="modal__eng-test_mb-answers-input">
+            <input type="checkbox" id="a" name="a" value="have">
+            <label for="a"> d) is</label>
+          </div>
+        </div>
+        <div class="modal__eng-test_mb-buttons">
+          <div class="modal__eng-test_mb-buttons-prev">
+            <img src="@/assets/img/arrow-left.svg" alt="arrow">
+          </div>
+          <div class="modal__eng-test_mb-buttons-next">
+            <img src="@/assets/img/arrow-right.svg" alt="arrow">
+          </div>
+        </div>
+      </div>
     </template>
   </Modal>
 
-  <div class="banner__company">
+  <div class="banner__company" id="company">
     <div class="banner__company-text-details">
       <div class="banner__company-text">
         <img src="@/assets/img/people.svg" alt="people" class="banner__company-text-img">
@@ -556,12 +603,12 @@
           <p class="banner__company-details-join-text">Присоединяйтесь!</p>
           <p class="banner__company-details-text">Станьте следующим выпускником нашей школы “SoLo English”</p>
         </div>
-        <button class="banner__company-details-button">Хочу обучаться тут!</button>
+        <button class="banner__company-details-button" @click="showModal">Хочу обучаться тут!</button>
       </div>
     </div>
   </div>
 
-  <div class="banner__price">
+  <div class="banner__price" id="price">
     <p class="banner__price-topic">Стоимость обучения</p>
     <div class="banner__price-wrap">
       <p class="banner__price-text">Выберите курс обучения, наиболее подходящий для Ваших целей</p>
@@ -624,7 +671,7 @@
                 <p class="banner__price-blocks_detailed-price-bold">2 600 ₽</p>
               </div>
             </div>
-            <button class="banner__price-blocks_detailed-button">Записаться на пробный урок</button>
+            <button class="banner__price-blocks_detailed-button" @click="showModal">Записаться на пробный урок</button>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -652,7 +699,7 @@
                 <p class="banner__price-blocks_detailed-price-bold">5 600 ₽</p>
               </div>
             </div>
-            <button class="banner__price-blocks_detailed-button">Записаться на пробный урок</button>
+            <button class="banner__price-blocks_detailed-button" @click="showModal">Записаться на пробный урок</button>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -680,7 +727,7 @@
                 <p class="banner__price-blocks_detailed-price-bold">3 600 ₽</p>
               </div>
             </div>
-            <button class="banner__price-blocks_detailed-button">Записаться на пробный урок</button>
+            <button class="banner__price-blocks_detailed-button" @click="showModal">Записаться на пробный урок</button>
           </div>
         </swiper-slide>
       </swiper>
@@ -750,7 +797,7 @@
       </swiper>
     </div>
   </div>
-  <div class="banner__review">
+  <div class="banner__review" id="review">
     <p class="banner__review-topic">Отзывы учеников</p>
     <swiper ref="{swiperRef}" :slidesPerView="1" :spaceBetween="300" :pagination="{
       type: 'fraction',
@@ -797,7 +844,7 @@
       </swiper-slide>
     </swiper>
   </div>
-  <div class="banner__questions">
+  <div class="banner__questions" id="questions">
     <p class="banner__questions-topic">Часто задаваемые вопросы</p>
     <div class="banner__questions-collapse-ask">
       <div class="banner__questions-collapse">
@@ -817,7 +864,7 @@
         <p class="banner__questions-ask-topic">Остались вопросы?</p>
         <p class="banner__questions-ask-text">Если Вы не нашли ответа на свой вопрос, то просим оставить заявку вместе с
           интересющим Вас вопросом и мы обязательно на него ответим!</p>
-        <button class="banner__questions-ask-btn">Задать вопрос</button>
+        <button class="banner__questions-ask-btn" @click="showModal">Задать вопрос</button>
       </div>
     </div>
   </div>
@@ -848,7 +895,7 @@
             <p class="banner__contacts-info-location-address-text">Юлия Витальевна</p>
           </div>
         </div>
-        <button class="banner__contacts-map-info-button">Заказать звонок</button>
+        <button class="banner__contacts-map-info-button" @click="showModal">Заказать звонок</button>
       </div>
     </div>
   </div>
@@ -879,7 +926,7 @@
           <p class="footer-options__navigation-text">Деловой английский (Продвинутый)</p>
         </div>
         <div class="footer-options__contacts">
-          <button class="footer-options__contacts-button">Связаться с нами</button>
+          <button class="footer-options__contacts-button" @click="showModal">Связаться с нами</button>
           <div class="footer-options__contacts-info-location">
             <img src="@/assets/img/here.svg" alt="location">
             <div class="footer-options__contacts-info-location-address">
@@ -932,6 +979,7 @@ export default {
       isModalApplicationVisible: false,
       showWhiteCloseIcon: false,
       applyHeaderNewStyle: false,
+      showTestCloseIcon: false,
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -963,31 +1011,38 @@ export default {
       this.isModalApplicationVisible = true;
       this.showWhiteCloseIcon = true;
       this.applyHeaderNewStyle = true;
+      document.body.style.overflow = 'hidden';
     },
     closeApplication() {
       this.isModalApplicationVisible = false;
       this.isModalVisible = false;
+      document.body.style.overflow = '';
     },
     startTest() {
       this.isTestVisible = true;
+      document.body.style.overflow = 'hidden';
     },
     finishTest() {
       this.isTestVisible = false;
       this.isModalTestVisible = false;
+      document.body.style.overflow = '';
     },
     openTest() {
       this.isModalTestVisible = true;
+      this.showTestCloseIcon = true;
+      document.body.style.overflow = 'hidden';
     },
     closeTest() {
       this.isModalTestVisible = false;
+      document.body.style.overflow = '';
     },
     openMenu() {
       this.isMobileModelVisible = true;
-      document.querySelector('.secondary-header').classList.add('removeHeader')
+      document.querySelector('.secondary-header').classList.add('removeHeader');
     },
     closeMenu() {
       this.isMobileModelVisible = false;
-      document.querySelector('.secondary-header').classList.remove('removeHeader')
+      document.querySelector('.secondary-header').classList.remove('removeHeader');
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
@@ -1004,15 +1059,19 @@ export default {
     },
     showModal() {
       this.isModalVisible = true;
+      document.body.style.overflow = 'hidden';
     },
     closeModal() {
       this.isModalVisible = false;
+      document.body.style.overflow = '';
     },
     showFirstModal() {
       this.isFirstModalVisible = true;
+      document.body.style.overflow = 'hidden';
     },
     closeFirstModal() {
       this.isFirstModalVisible = false;
+      document.body.style.overflow = '';
     },
   },
   components: {
@@ -1028,8 +1087,6 @@ export default {
     };
   },
 };
-
-
 </script>
 
 <style lang="scss">
@@ -1037,6 +1094,14 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header__close_test-mb {
+  display: none;
 }
 
 .newClose {
@@ -1157,6 +1222,7 @@ export default {
     line-height: 140%;
     color: #fff;
     border: none;
+    cursor: pointer;
   }
 }
 
@@ -1319,6 +1385,7 @@ h3 {
 .banner__programs {
   padding: 90px 100px 100px 100px;
   background: #f7f7fa;
+  cursor: pointer;
 
   &-first {
     background: #051d65;
@@ -1505,6 +1572,7 @@ h3 {
     line-height: 140%;
     color: #fff;
     margin-top: 24px;
+    cursor: pointer;
   }
 
   &-form-personal {
@@ -1624,6 +1692,7 @@ label {
 .append-buttons {
   text-align: center;
   margin-top: 20px;
+  cursor: pointer;
 }
 
 .append-buttons button {
@@ -1636,6 +1705,7 @@ label {
   border-radius: 4px;
   margin: 0 10px;
   font-size: 13px;
+  cursor: pointer;
 }
 
 .banner__level {
@@ -1720,6 +1790,7 @@ label {
     background: #b92831;
     border: none;
     margin: 50px 0 0 0;
+    cursor: pointer;
   }
 }
 
@@ -1892,6 +1963,7 @@ label {
     background: #b92831;
     border: none;
     margin: 0 100px 200px 300px;
+    cursor: pointer;
   }
 }
 
@@ -1928,7 +2000,47 @@ label {
     background: #b92831;
     border: none;
     margin: 0 100px 0 300px;
+    cursor: pointer;
   }
+}
+
+.modal__test_mb {
+  padding: 16px;
+  font-family: "Poppins", sans-serif;
+
+  img {
+    width: 171px;
+    height: 48px;
+  }
+}
+
+.modal__test-topic_mb {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 120%;
+  text-align: center;
+  color: #051d65;
+  margin: 53px 0 16px 0;
+}
+
+.modal__test-text_mb {
+  font-size: 14px;
+  line-height: 140%;
+  text-align: center;
+  color: #333;
+  margin: 0 0 65px 0;
+}
+
+.modal__test-button_mb {
+  border-radius: 5px;
+  width: 100%;
+  height: 51px;
+  background: #b92831;
+  border: none;
+  font-size: 18px;
+  line-height: 120%;
+  text-align: center;
+  color: #fff;
 }
 
 .modal__eng-test {
@@ -1986,6 +2098,7 @@ label {
     display: flex;
     justify-content: space-between;
     margin: 118px 0 0 0;
+    cursor: pointer;
 
     &-prev {
       display: flex;
@@ -2021,6 +2134,97 @@ label {
         text-align: center;
         color: #fff;
         padding: 19px 0 17px 50px;
+      }
+    }
+  }
+}
+
+.modal__eng-test_mb {
+  padding: 16px;
+  font-family: "Poppins", sans-serif;
+
+  img {
+    width: 171px;
+    height: 48px;
+  }
+
+  &-topic {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 120%;
+    color: #051d65;
+    margin: 41px 0 8px 0;
+  }
+
+  &-question {
+    border-radius: 5px;
+    width: 311px;
+    height: 45px;
+    background: #dff1f8;
+    margin-bottom: 24px;
+
+    &-text {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 120%;
+      color: #051d65;
+      padding: 14px 0 12px 8px;
+    }
+  }
+
+  &-answers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    label {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      color: #051d65;
+    }
+
+    input[type=checkbox] {
+      width: 24px;
+      height: 24px;
+      accent-color: #b92831;
+    }
+
+    &-input {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 0 0;
+    cursor: pointer;
+
+    &-prev {
+      border: 1px solid #051d65;
+      border-radius: 5px;
+      width: 89px;
+      height: 51px;
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 16px;
+      }
+    }
+
+    &-next {
+      border-radius: 5px;
+      width: 89px;
+      height: 51px;
+      background: #051d65;
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 16px;
       }
     }
   }
@@ -2090,6 +2294,7 @@ label {
     height: 80px;
     background: #b92831;
     border: none;
+    cursor: pointer;
   }
 }
 
@@ -2309,6 +2514,7 @@ iframe {
     height: 80px;
     background: #b92831;
     border: none;
+    cursor: pointer;
   }
 }
 
@@ -2442,6 +2648,7 @@ iframe {
     height: 60px;
     border: none;
     margin-top: 80px;
+    cursor: pointer;
   }
 }
 
@@ -2506,6 +2713,7 @@ iframe {
       text-align: center;
       color: #fff;
       border: none;
+      cursor: pointer;
     }
 
     &__contacts-text {
@@ -2554,7 +2762,6 @@ iframe {
   background: #051d65;
   border-radius: 16px 0 0 16px;
   width: 489px;
-  height: 696px;
   padding: 24px 39px 0 24px;
 }
 
@@ -2694,8 +2901,14 @@ iframe {
   }
 
   .banner__advantages {
+    margin: 140px 100px 150px 100px;
+
+    &_first-row {
+      gap: 70px;
+    }
+
     &_second-row {
-      gap: 210px;
+      gap: 150px;
     }
 
     &_third-row {
@@ -2773,6 +2986,7 @@ iframe {
     &-form-button {
       width: 100%;
       font-size: 20px;
+      cursor: pointer;
     }
 
     &-form-personal {
@@ -2865,11 +3079,12 @@ iframe {
 
     &-details-button {
       width: 330px;
+      cursor: pointer;
     }
   }
 
   .banner__price {
-    padding: 70px 200px 70px 200px;
+    padding: 70px 120px 70px 120px;
 
     &-topic {
       font-size: 50px;
@@ -2917,6 +3132,7 @@ iframe {
 
   .banner__programs-form-button {
     width: 320px !important;
+    cursor: pointer;
   }
 
   .banner__level-question-topic {
@@ -3037,6 +3253,7 @@ iframe {
   .banner__programs-form-comment-input,
   .banner__programs-form-button {
     width: 250px !important;
+    cursor: pointer;
   }
 
   .banner__programs-form-personal {
@@ -3176,7 +3393,7 @@ iframe {
   .banner__programs-form-name-input,
   .banner__programs-form-comment-input,
   .banner__programs-form-button {
-    width: 350px !important;
+    width: 100% !important;
   }
 
   .banner__level {
@@ -3316,6 +3533,10 @@ iframe {
 @media (max-width: 475px) {
   .header {
     display: none;
+  }
+
+  .header__close_test-mb {
+    display: block;
   }
 
   .secondary-header {
@@ -4162,13 +4383,13 @@ iframe {
     flex-direction: column;
     gap: 0;
     width: 100%;
-    height: 620px;
+    max-height: 750px;
     padding: 8px 8px 16px 8px;
   }
 
   .modal__request {
     width: 100%;
-    height: 207px;
+    height: 220px;
     border-radius: 10px;
     padding: 8px 0 16px 8px;
 
@@ -4179,12 +4400,13 @@ iframe {
 
     &-topic {
       font-size: 24px;
-      margin: 63px 82px 8px 0;
+      margin: 63px 0 8px 0;
       text-align: left;
     }
 
     &-text {
       font-size: 14px;
+      padding: 0 8px 0 0;
     }
   }
 
