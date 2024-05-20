@@ -2,10 +2,11 @@
   <transition name="modal-fade">
     <div class="modal-backdrop">
       <div class="modal">
-        <header class="modal-header">
+        <header :class="{'modal-header': true, 'modal-header-new-style': applyHeaderNewStyle}">
           <slot name="header"></slot>
-          <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close">
+          <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close" v-if="!showWhiteCloseIcon">
           <img src="@/assets/img/close-white.svg" alt="close" @click="close" class="header__close_white">
+          <img src="@/assets/img/close_white_lg.svg" alt="close" @click="close" class="header__close_white-lg" v-if="showWhiteCloseIcon">
         </header>
         <section class="modal-body">
           <slot name="body"></slot>
@@ -21,6 +22,16 @@
 <script>
 export default {
   name: 'Modal',
+  props: {
+    showWhiteCloseIcon: {
+      type: Boolean,
+      default: false
+    },
+    applyHeaderNewStyle: {
+      type: Boolean,
+      default: false
+    },
+  },
   methods: {
     close() {
       this.$emit('close');
@@ -102,5 +113,15 @@ export default {
     right: 20px;
     top: 20px;
   }
+}
+
+.header__close_white-lg {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.modal-header-new-style {
+  padding: 16px 16px 0 16px;
 }
 </style>

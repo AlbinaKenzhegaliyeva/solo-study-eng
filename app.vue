@@ -304,7 +304,7 @@
     </div>
   </div>
 
-  <Modal v-show="isModalApplicationVisible" @close="closeApplication">
+  <Modal v-show="isModalApplicationVisible" @close="closeApplication" :showWhiteCloseIcon="showWhiteCloseIcon" :applyHeaderNewStyle="applyHeaderNewStyle">
     <template #header>
       <div class="modal__application">
         <img src="@/assets/img/school2.svg" alt="logo">
@@ -930,6 +930,8 @@ export default {
       isModalTestVisible: false,
       isTestVisible: false,
       isModalApplicationVisible: false,
+      showWhiteCloseIcon: false,
+      applyHeaderNewStyle: false,
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -959,6 +961,8 @@ export default {
   methods: {
     openApplication() {
       this.isModalApplicationVisible = true;
+      this.showWhiteCloseIcon = true;
+      this.applyHeaderNewStyle = true;
     },
     closeApplication() {
       this.isModalApplicationVisible = false;
@@ -1033,6 +1037,13 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.newClose {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 
 .secondary-header__show {
@@ -1484,7 +1495,7 @@ h3 {
 
   &-form-button {
     border-radius: 10px;
-    width: 521px;
+    width: 100%;
     height: 80px;
     background: #b92831;
     border: none;
@@ -1880,7 +1891,7 @@ label {
     height: 80px;
     background: #b92831;
     border: none;
-    margin: 0 100px 0 300px;
+    margin: 0 100px 200px 300px;
   }
 }
 
@@ -4101,8 +4112,7 @@ iframe {
   }
 
   .modal {
-    max-width: 475;
-    height: 663px;
+    width: 100%;
   }
 
   .modal-header {
