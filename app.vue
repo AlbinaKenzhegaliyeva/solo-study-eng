@@ -52,7 +52,7 @@
     </div>
   </header>
 
-  <div class="banner__learn-eng" v-show="!isMobileModelVisible">
+  <div class="banner__learn-eng">
     <div class="banner__learn-eng-info">
       <h1>Изучайте английский язык вместе с SoLo English</h1>
       <p class="banner__learn-eng-info-text">Деловой английский по авторской методологии у сертифицированных
@@ -869,7 +869,7 @@
     </div>
   </div>
 
-  <div class="banner__contacts">
+  <div class="banner__contacts" id="contacts">
     <div class="banner__contacts-map-info">
       <img src="@/assets/img/map.svg" alt="map" class="banner__contacts-map-info-img">
       <div class="banner__contacts-info">
@@ -908,22 +908,22 @@
         </div>
         <div class="footer-options__navigation">
           <p class="footer-options__navigation-text-bold">НАВИГАЦИЯ</p>
-          <p class="footer-options__navigation-text" style="color: #b92831;">Почему мы?</p>
-          <p class="footer-options__navigation-text">Наши услуги</p>
-          <p class="footer-options__navigation-text">Преподаватели</p>
-          <p class="footer-options__navigation-text">Пройти тест</p>
-          <p class="footer-options__navigation-text">О компании</p>
-          <p class="footer-options__navigation-text">Стоимость</p>
-          <p class="footer-options__navigation-text">Отзывы</p>
-          <p class="footer-options__navigation-text">Вопросы-Ответ</p>
-          <p class="footer-options__navigation-text">Контакты</p>
+          <a href="#why" class="footer-options__navigation-text">Почему мы?</a>
+          <a href="#programs" class="footer-options__navigation-text">Наши услуги</a>
+          <a href="#teachers" class="footer-options__navigation-text">Преподаватели</a>
+          <a href="#test" class="footer-options__navigation-text">Пройти тест</a>
+          <a href="#company" class="footer-options__navigation-text">О компании</a>
+          <a href="#price" class="footer-options__navigation-text">Стоимость</a>
+          <a href="#review" class="footer-options__navigation-text">Отзывы</a>
+          <a href="#questions" class="footer-options__navigation-text">Вопросы-Ответ</a>
+          <a href="#contacts" class="footer-options__navigation-text">Контакты</a>
         </div>
         <div class="footer-options__programs">
           <p class="footer-options__navigation-text-bold">ПРОГРАММЫ</p>
-          <p class="footer-options__navigation-text">Английский для взрослых (Базовый)</p>
-          <p class="footer-options__navigation-text">Английский для взрослых (Продвинутый)</p>
-          <p class="footer-options__navigation-text">Деловой английский (Базовый)</p>
-          <p class="footer-options__navigation-text">Деловой английский (Продвинутый)</p>
+          <a href="#programs" class="footer-options__navigation-text">Английский для взрослых (Базовый)</a>
+          <a href="#programs" class="footer-options__navigation-text">Английский для взрослых (Продвинутый)</a>
+          <a href="#programs" class="footer-options__navigation-text">Деловой английский (Базовый)</a>
+          <a href="#programs" class="footer-options__navigation-text">Деловой английский (Продвинутый)</a>
         </div>
         <div class="footer-options__contacts">
           <button class="footer-options__contacts-button" @click="showModal">Связаться с нами</button>
@@ -1011,6 +1011,7 @@ export default {
       this.isModalApplicationVisible = true;
       this.showWhiteCloseIcon = true;
       this.applyHeaderNewStyle = true;
+      this.isModalVisible = false;
       document.body.style.overflow = 'hidden';
     },
     closeApplication() {
@@ -1038,11 +1039,11 @@ export default {
     },
     openMenu() {
       this.isMobileModelVisible = true;
-      document.querySelector('.secondary-header').classList.add('removeHeader');
+      document.body.style.overflow = 'hidden';
     },
     closeMenu() {
       this.isMobileModelVisible = false;
-      document.querySelector('.secondary-header').classList.remove('removeHeader');
+      document.body.style.overflow = '';
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
@@ -1210,6 +1211,7 @@ html {
 
   &__button {
     padding: 36px 0 29px 100px;
+    cursor: pointer;
   }
 
   &__btn {
@@ -1254,6 +1256,7 @@ html {
     display: flex;
     gap: 24px;
     margin: 50px 0 0 0;
+    cursor: pointer;
   }
 
   &-info-btns_red {
@@ -1267,6 +1270,7 @@ html {
     line-height: 140%;
     color: #fff;
     border: none;
+    cursor: pointer;
   }
 
   &-info-btns_blue {
@@ -1281,6 +1285,7 @@ html {
     text-align: center;
     color: #fff;
     background: none;
+    cursor: pointer;
   }
 }
 
@@ -2057,7 +2062,7 @@ label {
 
   &-question {
     border-radius: 10px;
-    width: 993px;
+    width: 860px;
     height: 94px;
     background: #dff1f8;
     margin-bottom: 32px;
@@ -2699,6 +2704,12 @@ iframe {
       line-height: 140%;
       color: #fff;
       margin: 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &__navigation-text:hover {
+      color: #b92831;
     }
 
     &__contacts-button {
@@ -3289,7 +3300,7 @@ iframe {
 
   .banner__videos-info-wrapped {
     font-size: 26px;
-    padding: 0;
+    padding: 0 0 0 50px;
   }
 
   .banner__questions-collapse-ask {
@@ -3327,14 +3338,24 @@ iframe {
     padding: 24px 10px 17px 10px;
 
     &-options {
-      gap: 10px;
+      gap: 20px;
       white-space: nowrap;
 
       a {
         padding-top: 10px;
-        font-size: 14px;
+        font-size: 12px;
+      }
+
+      .secondary-header__btn {
+        margin: 20px 0 0 20px;
       }
     }
+  }
+
+  .banner__learn-eng-info-btns_red,
+  .banner__learn-eng-info-btns_blue {
+    font-size: 16px;
+    width: 190px !important;
   }
 
   .banner__learn-eng-info-benefits_scheduled-text,
@@ -3343,11 +3364,11 @@ iframe {
   .banner__learn-eng-info-benefits_learning-text {
     font-size: 16px;
   }
-  
+
   .header__address-text,
   .header__contacts-telepone-text,
   .header__contacts-mail-text {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .header__contacts {
@@ -3356,6 +3377,12 @@ iframe {
 
   .secondary-header__school-logo {
     width: 200px;
+  }
+
+  .secondary-header__btn {
+    width: 120px !important;
+    height: 40px !important;
+    font-size: 12px !important;
   }
 
   .secondary-header__options-text {
@@ -3381,6 +3408,30 @@ iframe {
 
   .banner__learn-eng-pic-test {
     top: 380px !important;
+  }
+
+  .banner__advantages {
+    h2 {
+      font-size: 40px;
+    }
+
+    h3 {
+      font-size: 24px;
+    }
+
+    &_first-row-col1-text {
+      font-size: 20px;
+    }
+  }
+
+  .banner__programs {
+    h4 {
+      font-size: 40px;
+    }
+
+    &-form-personal {
+      font-size: 16px !important;
+    }
   }
 
   .banner__advantages_second-row,
@@ -3413,6 +3464,24 @@ iframe {
   .banner__programs-form-comment-input,
   .banner__programs-form-button {
     width: 100% !important;
+  }
+
+  .banner__teachers {
+    h4 {
+      font-size: 40px;
+    }
+
+    &_about {
+      font-size: 22px;
+    }
+
+    &-name {
+      font-size: 24px;
+    }
+
+    &-info {
+      font-size: 20px;
+    }
   }
 
   .banner__level {
@@ -3481,6 +3550,18 @@ iframe {
   .banner__level .container_line {
     gap: 20px;
   }
+  
+  .modal__application {
+    margin: 5px 0 0 0;
+  }
+
+  .modal__test-button {
+    margin: 0 100px 0 230px;
+  }
+
+  .modal__application-button {
+    margin: 0 100px 200px 230px;
+  }
 
   .banner__company-text-details {
     flex-direction: column;
@@ -3490,6 +3571,18 @@ iframe {
     width: 100%;
   }
 
+  .banner__company-text-topic {
+    font-size: 40px;
+  }
+
+  .banner__company-details-text {
+    font-size: 20px;
+  }
+
+  .banner__company-text-info {
+    font-size: 20px;
+  }
+
   .banner__company-details-button {
     margin-bottom: 30px;
     width: 100%;
@@ -3497,18 +3590,43 @@ iframe {
 
   .banner__price {
     padding: 70px 30px !important;
+
+    &-topic {
+      font-size: 40px;
+    }
+
+    &-text {
+      font-size: 22px;
+    }
+  }
+
+  .banner__videos-topic {
+    font-size: 40px;
   }
 
   .banner__videos-info-wrapped {
     padding-left: 50px;
+    font-size: 22px;
   }
 
   .banner__review {
     padding: 90px 150px 80px 150px;
+
+    &-topic {
+      font-size: 40px;
+    }
   }
 
   .banner__questions {
     padding: 200px 30px;
+
+    &-topic {
+      font-size: 40px;
+    }
+
+    &-ask-topic {
+      font-size: 35px;
+    }
   }
 
   .banner__questions-collapse-ask {
@@ -3583,6 +3701,7 @@ iframe {
 
   .burger-menu-icon {
     display: block;
+    cursor: pointer;
   }
 
   .secondary-header__button {
@@ -3676,7 +3795,7 @@ iframe {
 
   h2 {
     margin: 0;
-    font-size: 28px;
+    font-size: 28px !important;
   }
 
   .banner__advantages_first-row,
@@ -3688,7 +3807,7 @@ iframe {
   }
 
   h3 {
-    font-size: 20px;
+    font-size: 20px !important;
     margin: 0 0 8px 0;
   }
 
@@ -3716,7 +3835,7 @@ iframe {
   }
 
   h4 {
-    font-size: 28px;
+    font-size: 28px !important;
   }
 
   .banner__programs_row-one {
@@ -3786,7 +3905,7 @@ iframe {
 
   .banner__programs-form-level {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 24px !important;
     margin: 90px 0 0 0;
     padding: 0;
   }
@@ -4349,10 +4468,6 @@ iframe {
     height: 812px;
     background: #fff;
     z-index: 10000000;
-  }
-
-  .removeHeader {
-    display: none;
   }
 
   .modal {

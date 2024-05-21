@@ -186,5 +186,6 @@ export default {
   color: #fff;
   border: none;
   margin: 20px 40px 0 40px;
+  cursor: pointer;
 }
 </style>
