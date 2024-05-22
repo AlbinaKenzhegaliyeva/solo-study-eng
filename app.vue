@@ -18,16 +18,17 @@
     <div class="header">
       <div class="header__address">
         <img src="@/assets/img/location.svg" alt="location">
-        <p class="header__address-text">197375, Санкт-Петербург, ул. Садовая, д. 53, офис 1121</p>
+        <p class="header__address-text">{{ this.contact_headers.address }}</p>
       </div>
       <div class="header__contacts">
         <div class="header__contacts-telephone">
           <img src="@/assets/img/telephone.svg" alt="location">
-          <p class="header__contacts-telepone-text">+7 (921) 320 74 06 / +7 (921) 320 74 06</p>
+          <p class="header__contacts-telepone-text">{{ this.contact_headers.contact_phone }} / {{
+            this.contact_headers.contact_phone2 }}</p>
         </div>
         <div class="header__contacts-mail">
           <img src="@/assets/img/maill.svg" alt="mail">
-          <p class="header__contacts-mail-text">solo.english@gmail.com</p>
+          <p class="header__contacts-mail-text">{{ this.contact_headers.contact_email }}</p>
         </div>
       </div>
     </div>
@@ -54,9 +55,8 @@
 
   <div class="banner__learn-eng">
     <div class="banner__learn-eng-info">
-      <h1>Изучайте английский язык вместе с SoLo English</h1>
-      <p class="banner__learn-eng-info-text">Деловой английский по авторской методологии у сертифицированных
-        преподавателей</p>
+      <h1>{{ this.main_texts.text }}</h1>
+      <p class="banner__learn-eng-info-text">{{ this.main_texts.description }}</p>
       <div class="banner__learn-eng-info-btns">
         <button class="banner__learn-eng-info-btns_red" @click="showModal">Получить консультацию</button>
         <button class="banner__learn-eng-info-btns_blue" @click="openTest">Узнать свой уровень</button>
@@ -91,16 +91,15 @@
     </div>
   </div>
   <div id="why" class="banner__advantages">
-    <h2>Почему нужно обучаться именно у нас?</h2>
+    <h2>{{ this.advantage_blocks.text }}</h2>
     <div class="banner__advantages_first-row">
       <div class="banner__advantages_first-row-col1">
         <div>
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>Уникальная методика</h3>
-          <p class="banner__advantages_first-row-col1-text">Обучение по авторской методике руководителя центра “Solo
-            English”</p>
+          <h3>{{ this.advantages.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages.description }}</p>
         </div>
       </div>
       <div class="banner__advantages_first-row-col1">
@@ -108,9 +107,8 @@
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>Удобное расписание</h3>
-          <p class="banner__advantages_first-row-col1-text">Наша команда позаботилась о том, чтобы каждый из Вас
-            успевал на занятия</p>
+          <h3>{{ this.advantages1.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages1.description }}</p>
         </div>
       </div>
     </div>
@@ -120,8 +118,8 @@
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>250+ выпускников</h3>
-          <p class="banner__advantages_first-row-col1-text">Наш центр уже выпустил более 250 довольных студентов</p>
+          <h3>{{ this.advantages2.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages2.description }}</p>
         </div>
       </div>
       <div class="banner__advantages_first-row-col1">
@@ -129,9 +127,8 @@
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>Индивидуальный подход</h3>
-          <p class="banner__advantages_first-row-col1-text">Не сомневайтесь, наши преподаватели найдут свой подход к
-            каждому студенту</p>
+          <h3>{{ this.advantages4.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages4.description }}</p>
         </div>
       </div>
     </div>
@@ -141,9 +138,8 @@
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>Лучшие преподаватели</h3>
-          <p class="banner__advantages_first-row-col1-text">Вас будут обучать только сертифицированные преподаватели
-          </p>
+          <h3>{{ this.advantages3.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages3.description }}</p>
         </div>
       </div>
       <div class="banner__advantages_first-row-col1">
@@ -151,16 +147,15 @@
           <img src="@/assets/img/bookss.svg" alt="books" class="banner__advantages_first-row-col1-img">
         </div>
         <div class="banner__advantages_first-row-col1-info">
-          <h3>Сертификат</h3>
-          <p class="banner__advantages_first-row-col1-text">По окончанию Вы обязательно получаете сертификат
-            подтверждающий Ваш уровень</p>
+          <h3>{{ this.advantages5.text }}</h3>
+          <p class="banner__advantages_first-row-col1-text">{{ this.advantages5.description }}</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="banner__programs" id="programs">
-    <h4>Наши программы</h4>
+    <h4>{{ this.programs.text }}</h4>
     <div class="banner__programs-all">
       <div>
         <div class="banner__programs_row-one">
@@ -169,8 +164,8 @@
               <h5>01</h5>
               <img src="@/assets/img/base.svg" alt="base" class="banner__programs-first-base-img">
             </div>
-            <h6>Английский для взрослых</h6>
-            <p class="banner__programs-first-info">Если Вы только начинаете изучать язык, то эта программа для Вас</p>
+            <h6>{{ this.program_types.text }}</h6>
+            <p class="banner__programs-first-info">{{ this.program_types.description }}</p>
             <div class="banner__programs-first-link" @click="showFirstModal">
               <p class="banner__programs-first-link-info-more">Узнать подробнее</p>
               <img src="@/assets/img/line.svg" alt="line" class="banner__programs-first-link-arrow">
@@ -181,10 +176,8 @@
               <p class="banner__programs-second-topic">02</p>
               <img src="@/assets/img/top.svg" alt="top" class="banner__programs-first-base-img">
             </div>
-            <p class="banner__programs-second-eng">Английский для взрослых</p>
-            <p class="banner__programs-second-eng-info">Если Вы только начинаете изучать язык, то эта программа для
-              Вас
-            </p>
+            <p class="banner__programs-second-eng">{{ this.program_types2.text }}</p>
+            <p class="banner__programs-second-eng-info">{{ this.program_types2.description }}</p>
             <div class="banner__programs-second-link" @click="showFirstModal">
               <p class="banner__programs-second-link-info-more">Узнать подробнее</p>
               <img src="@/assets/img/line2.svg" alt="line" class="banner__programs-first-link-arrow">
@@ -198,9 +191,8 @@
               <p class="banner__programs-second-topic">03</p>
               <img src="@/assets/img/base.svg" alt="base" class="banner__programs-first-base-img">
             </div>
-            <p class="banner__programs-second-eng">Деловой английский</p>
-            <p class="banner__programs-second-eng-info">Встречи, поездки, знакомства, переговоры - всё в этой
-              программе</p>
+            <p class="banner__programs-second-eng">{{ this.program_types1.text }}</p>
+            <p class="banner__programs-second-eng-info">{{ this.program_types1.description }}</p>
             <div class="banner__programs-second-link" @click="showFirstModal">
               <p class="banner__programs-second-link-info-more">Узнать подробнее</p>
               <img src="@/assets/img/line2.svg" alt="line" class="banner__programs-first-link-arrow">
@@ -211,8 +203,8 @@
               <h5>04</h5>
               <img src="@/assets/img/top.svg" alt="top" class="banner__programs-first-base-img">
             </div>
-            <h6>Деловой английский</h6>
-            <p class="banner__programs-first-info">Встречи, поездки, знакомства, переговоры - всё в этой программе</p>
+            <h6>{{ this.program_types3.text }}</h6>
+            <p class="banner__programs-first-info">{{ this.program_types3.description }}</p>
             <div class="banner__programs-first-link" @click="showFirstModal">
               <p class="banner__programs-first-link-info-more">Узнать подробнее</p>
               <img src="@/assets/img/line.svg" alt="line" class="banner__programs-first-link-arrow">
@@ -318,9 +310,8 @@
   </Modal>
 
   <div class="banner__teachers" id="teachers">
-    <h4>Преподаватели “SoLo English”</h4>
-    <p class="banner__teachers_about">В нашей школе преподают 13 преподавателей с большим стажем и наличием
-      международного сертификата</p>
+    <h4>{{ this.teacher_blocks.text }}</h4>
+    <p class="banner__teachers_about">{{ this.teacher_blocks.description }}</p>
 
     <swiper ref="{swiperRef}" :slidesPerView="4" :centeredSlides="false" :spaceBetween="30" :pagination="{
       type: 'fraction',
@@ -330,30 +321,29 @@
       <swiper-slide>
         <div>
           <img src="@/assets/img/andrey.svg" alt="person" style="width: 412px;height: 521px;">
-          <p class="banner__teachers-name">Симбирцев Андрей</p>
-          <p class="banner__teachers-info">Международная квалификация: Cambridge CELTA.</p>
+          <p class="banner__teachers-name">{{ this.teachers.full_name }}</p>
+          <p class="banner__teachers-info">{{ this.teachers.description }}</p>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div>
           <img src="@/assets/img/valya.svg" alt="person" style="width: 412px;height: 521px;">
-          <p class="banner__teachers-name">Иванова Валентина</p>
-          <p class="banner__teachers-info">Международная квалификация: Cambridge CELTA, TKT (Modules 1,2,3), C1
-            Advanced, IH Certificate in Online Tutoring</p>
+          <p class="banner__teachers-name">{{ this.teachers1.full_name }}</p>
+          <p class="banner__teachers-info">{{ this.teachers1.description }}</p>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div>
           <img src="@/assets/img/kris.svg" alt="person" style="width: 412px;height: 521px;">
-          <p class="banner__teachers-name">Михайлова Кристина</p>
-          <p class="banner__teachers-info">Международная квалификация: Cambridge CELTA.</p>
+          <p class="banner__teachers-name">{{ this.teachers2.full_name }}</p>
+          <p class="banner__teachers-info">{{ this.teachers2.description }}</p>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div>
           <img src="@/assets/img/leila.svg" alt="person" style="width: 412px;height: 521px;">
-          <p class="banner__teachers-name">Юсупова Лейла</p>
-          <p class="banner__teachers-info">Международная квалификация: Cambridge CELTA.</p>
+          <p class="banner__teachers-name">{{ this.teachers3.full_name }}</p>
+          <p class="banner__teachers-info">{{ this.teachers3.description }}</p>
         </div>
       </swiper-slide>
       <swiper-slide>
@@ -574,30 +564,23 @@
     <div class="banner__company-text-details">
       <div class="banner__company-text">
         <img src="@/assets/img/people.svg" alt="people" class="banner__company-text-img">
-        <p class="banner__company-text-topic">О компании</p>
-        <p class="banner__company-text-info">Компания “SoLo English” была создана в 2009 году в г. Санкт-Петербург, и по
-          началу был 1 преподаватель и 5 учеников.
-          Со временем школа выросла до целого обучающего центра, со своим
-          профессиональным коллективом и благодарными выпускниками. </p>
-        <p class="banner__company-text-info">
-          Цель нашей компании - помочь всем желающим изучить
-          язык и культуру иностранного языка. Нам не важно какой у Вас уровень английского, Ваш возраст - в нашем
-          коллективе мы находим подход к каждому студенту.</p>
-        <p class="banner__company-text-info">Дополнительное образование в наше время - не роскошь, а
-          необходимость.</p>
+        <p class="banner__company-text-topic">{{ this.abouts.text }}</p>
+        <p class="banner__company-text-info">{{ this.abouts.description }}</p>
+        <p class="banner__company-text-info">{{ this.abouts.description2 }}</p>
+        <p class="banner__company-text-info">{{ this.abouts.description3 }}</p>
       </div>
       <div class="banner__company-details">
         <div class="banner__company-details-year">
-          <h4>2009 г.</h4>
-          <p class="banner__company-details-text">основание школы “SoLo English” в г. Санкт-Петербург</p>
+          <h4>{{ this.abouts.number1 }}</h4>
+          <p class="banner__company-details-text">{{ this.abouts.text1 }}</p>
         </div>
         <div class="banner__company-details-certification">
-          <h4>13</h4>
-          <p class="banner__company-details-text">сертифицированных преподавателей</p>
+          <h4>{{ this.abouts.number2 }}</h4>
+          <p class="banner__company-details-text">{{ this.abouts.text2 }}</p>
         </div>
         <div class="banner__company-details-certification">
-          <h4>256</h4>
-          <p class="banner__company-details-text">выпускников нашей школы с дипломом на руках</p>
+          <h4>{{ this.abouts.number3 }}</h4>
+          <p class="banner__company-details-text">{{ this.abouts.text3 }}</p>
         </div>
         <div class="banner__company-details-join">
           <p class="banner__company-details-join-text">Присоединяйтесь!</p>
@@ -609,36 +592,37 @@
   </div>
 
   <div class="banner__price" id="price">
-    <p class="banner__price-topic">Стоимость обучения</p>
+    <p class="banner__price-topic">{{ this.course_block.text }}</p>
     <div class="banner__price-wrap">
-      <p class="banner__price-text">Выберите курс обучения, наиболее подходящий для Ваших целей</p>
+      <p class="banner__price-text">{{ this.course_block.description }}</p>
     </div>
     <div class="banner__price-blocks" v-show="!isMobile">
       <div class="banner__price-blocks_chosen">
         <div class="banner__price-blocks_chosen-adults-base" @click="chooseBlock('adults-base')"
           :class="{ active: chosenBlock === 'adults-base' }">
           <p class="banner__price-blocks_chosen-text" :style="{ color: chosenBlock === 'adults-base' ? 'white' : '' }">
-            Для взрослых (Базовый)</p>
+            {{ this.course_detail1.detail }}</p>
         </div>
         <div class="banner__price-blocks_chosen-adults-advanced" @click="chooseBlock('adults-advanced')"
           :class="{ active: chosenBlock === 'adults-advanced' }">
           <p class="banner__price-blocks_chosen-text"
-            :style="{ color: chosenBlock === 'adults-advanced' ? 'white' : '' }">Для взрослых (Продвинутый)</p>
+            :style="{ color: chosenBlock === 'adults-advanced' ? 'white' : '' }">{{ this.course_detail.detail }}</p>
         </div>
         <div class="banner__price-blocks_chosen-business-base" @click="chooseBlock('business-base')"
           :class="{ active: chosenBlock === 'business-base' }">
           <p class="banner__price-blocks_chosen-text"
             :style="{ color: chosenBlock === 'business-base' ? 'white' : '' }">
-            Деловой английский (Базовый)</p>
+            {{ this.course_detail3.detail }}</p>
         </div>
         <div class="banner__price-blocks_chosen-business-advanced" @click="chooseBlock('business-advanced')"
           :class="{ active: chosenBlock === 'business-advanced' }">
           <p class="banner__price-blocks_chosen-text"
-            :style="{ color: chosenBlock === 'business-advanced' ? 'white' : '' }">Деловой английский (Продвинутый)</p>
+            :style="{ color: chosenBlock === 'business-advanced' ? 'white' : '' }">{{ this.course_detail2.detail }}</p>
         </div>
       </div>
       <div class="banner__price-blocks_detailed">
-        <DetailedInfo :selectedBlock="chosenBlock" />
+        <DetailedInfo :selectedBlock="chosenBlock" :course="course" :course1="course1" :course2="course2"
+          :course3="course3" />
       </div>
     </div>
 
@@ -735,8 +719,8 @@
   </div>
 
   <div class="banner__videos">
-    <p class="banner__videos-topic">Видео-отзывы учеников</p>
-    <p class="banner__videos-info-wrapped">Мы собрали отзывы наших выпускников, где они поделились своими успехами</p>
+    <p class="banner__videos-topic">{{ video_review_blocks.text }}</p>
+    <p class="banner__videos-info-wrapped">{{ video_review_blocks.description }}</p>
     <div class="banner__videos-slider">
       <swiper ref="{swiperRef}" :slidesPerView="3" :spaceBetween="30" :pagination="{
         type: 'fraction',
@@ -749,8 +733,8 @@
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p class="banner__videos-slider-text-name">Максимова Светлана</p>
-            <p class="banner__videos-slider-text-year">Выпуск январь 2021</p>
+            <p class="banner__videos-slider-text-name">{{ video_reviews.title }}</p>
+            <p class="banner__videos-slider-text-year">{{ video_reviews.description }}</p>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -759,8 +743,8 @@
               title="BTS (방탄소년단) &#39;Dynamite&#39; Official MV" frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <p class="banner__videos-slider-text-name">Максимова Валентина</p>
-            <p class="banner__videos-slider-text-year">Выпуск январь 2021</p>
+            <p class="banner__videos-slider-text-name">{{ video_reviews1.title }}</p>
+            <p class="banner__videos-slider-text-year">{{ video_reviews1.description }}</p>
           </div>
         </swiper-slide>
         <swiper-slide>
@@ -798,7 +782,7 @@
     </div>
   </div>
   <div class="banner__review" id="review">
-    <p class="banner__review-topic">Отзывы учеников</p>
+    <p class="banner__review-topic">{{ text_review_blocks.text }}</p>
     <swiper ref="{swiperRef}" :slidesPerView="1" :spaceBetween="300" :pagination="{
       type: 'fraction',
     }" :navigation="true" :modules="modules" :breakpoints="{ 300: { slidesPerView: 1, spaceBetween: 0 } }"
@@ -806,13 +790,10 @@
       <swiper-slide>
         <div class="banner__review-item">
           <div class="banner__review-item-name-date">
-            <p class="banner__review-item-name">Юсупов Марат</p>
-            <p class="banner__review-item-date">11.12.2021</p>
+            <p class="banner__review-item-name">{{ text_reviews.name }}</p>
+            <p class="banner__review-item-date">{{ text_reviews.created_at }}</p>
           </div>
-          <p class="banner__review-item-text">Я очень доволен работой преподавателей “SoLo English”, я смог убрать свой
-            языковой барьер и теперь мне очень комфортно общаться с преподавателями во время своих деловых поездок 💼
-            👍🏻
-            Особая благодарность моему преподавателю Ивановой Валентине ❤️</p>
+          <p class="banner__review-item-text">{{ text_reviews.text }}</p>
         </div>
       </swiper-slide>
       <swiper-slide>
@@ -845,9 +826,11 @@
     </swiper>
   </div>
   <div class="banner__questions" id="questions">
-    <p class="banner__questions-topic">Часто задаваемые вопросы</p>
+    <p class="banner__questions-topic">{{ question_blocks.text }}</p>
     <div class="banner__questions-collapse-ask">
-      <div class="banner__questions-collapse">
+
+      <!-- My version without backend!!!! -->
+      <!-- <div class="banner__questions-collapse">
         <div v-for="(qa, index) in qas" :key="index" class="accordion-container">
           <div class="accordion" @click="toggleAccordion(index)" :class="{ active: qa.open }">
             <span>{{ qa.question }}</span>
@@ -857,6 +840,23 @@
             <p class="panel_answer">
               {{ qa.answer }}
             </p>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="banner__questions-collapse">
+        <div class="accordion-container" v-for="(q, index) in questions" :key="index">
+          <div class="accordion" @click="toggleAccordion(index)">
+            <span>{{ q.question }}</span>
+            <div class="arrow" :class="arrowClass(q.answerVisible)"></div>
+            <div class="arrow"></div>
+          </div>
+          <div>
+            <div v-show="q.answerVisible">
+              <p class="panel_answer_backend">
+                {{ q.answer }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -876,23 +876,23 @@
         <p class="banner__contacts-info-topic">Как с нами связаться</p>
         <div class="banner__contacts-info-location">
           <img src="@/assets/img/spot.svg" alt="map">
-          <div class="banner__contacts-info-location-address">
-            <p class="banner__contacts-info-location-address-text">197375, Санкт-Петербург,</p>
-            <p class="banner__contacts-info-location-address-text">ул. Садовая, д. 53, офис 1121</p>
+          <div class="banner__contacts-info-location-address" style="padding: 0 350px 0 0;">
+            <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.address }}</p>
+            <!-- <p class="banner__contacts-info-location-address-text">ул. Садовая, д. 53, офис 1121</p> -->
           </div>
         </div>
         <div class="banner__contacts-info-telephone">
           <img src="@/assets/img/hola.svg" alt="telephone">
           <div class="banner__contacts-info-location-address">
-            <p class="banner__contacts-info-location-address-text">+7 (921) 320 74 06</p>
-            <p class="banner__contacts-info-location-address-text">solo.english@gmail.com</p>
+            <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.contact_phone }}</p>
+            <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.contact_email }}</p>
           </div>
         </div>
         <div class="banner__contacts-info-whatsapp">
           <img src="@/assets/img/whatsapp.svg" alt="whatsapp">
           <div class="banner__contacts-info-location-address">
-            <p class="banner__contacts-info-location-address-text">+7 (921) 320 74 06</p>
-            <p class="banner__contacts-info-location-address-text">Юлия Витальевна</p>
+            <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.contact_phone2 }}</p>
+            <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.contact_name }}</p>
           </div>
         </div>
         <button class="banner__contacts-map-info-button" @click="showModal">Заказать звонок</button>
@@ -903,7 +903,8 @@
     <div class="footer">
       <div class="footer-options">
         <div class="footer-options__logo">
-          <img src="@/assets/img/school2.svg" alt="logo" class="footer-options__logo-school">
+          <!-- <img src="@/assets/img/school2.svg" alt="logo" class="footer-options__logo-school"> -->
+          <img :src="'https://komatech.online' + social_media.logo" alt="logo" class="footer-options__logo-school">
           <img src="@/assets/img/socials.svg" alt="social" class="footer-options__logo-socials">
         </div>
         <div class="footer-options__navigation">
@@ -920,25 +921,24 @@
         </div>
         <div class="footer-options__programs">
           <p class="footer-options__navigation-text-bold">ПРОГРАММЫ</p>
-          <a href="#programs" class="footer-options__navigation-text">Английский для взрослых (Базовый)</a>
-          <a href="#programs" class="footer-options__navigation-text">Английский для взрослых (Продвинутый)</a>
-          <a href="#programs" class="footer-options__navigation-text">Деловой английский (Базовый)</a>
-          <a href="#programs" class="footer-options__navigation-text">Деловой английский (Продвинутый)</a>
+          <a href="#programs" class="footer-options__navigation-text">{{ this.course_detail1.detail }}</a>
+          <a href="#programs" class="footer-options__navigation-text">{{ this.course_detail.detail }}</a>
+          <a href="#programs" class="footer-options__navigation-text">{{ this.course_detail3.detail }}</a>
+          <a href="#programs" class="footer-options__navigation-text">{{ this.course_detail2.detail }}</a>
         </div>
         <div class="footer-options__contacts">
           <button class="footer-options__contacts-button" @click="showModal">Связаться с нами</button>
           <div class="footer-options__contacts-info-location">
             <img src="@/assets/img/here.svg" alt="location">
             <div class="footer-options__contacts-info-location-address">
-              <p class="footer-options__contacts-text">197375, Санкт-Петербург,</p>
-              <p class="footer-options__contacts-text">ул. Садовая, д. 53, офис 1121</p>
+              <p class="footer-options__contacts-text">{{ this.contact_headers.address }}</p>
             </div>
           </div>
           <div class="footer-options__contacts-info-location">
             <img src="@/assets/img/trubka.svg" alt="telephone">
             <div class="footer-options__contacts-info-location-address">
-              <p class="footer-options__contacts-text">+7 (921) 320 74 06</p>
-              <p class="footer-options__contacts-text">solo.english@gmail.com</p>
+              <p class="footer-options__contacts-text">{{ this.contact_headers.contact_phone }}</p>
+              <p class="footer-options__contacts-text">{{ this.contact_headers.contact_email }}</p>
             </div>
           </div>
         </div>
@@ -955,6 +955,7 @@
 
 
 <script>
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -970,6 +971,7 @@ export default {
       windowWidth: window.innerWidth,
       chosenBlock: 'adults-advanced',
       isModalVisible: false,
+      showAnswer: false,
       isFirstModalVisible: false,
       isScrolled: false,
       isMobileModelVisible: false,
@@ -980,6 +982,51 @@ export default {
       showWhiteCloseIcon: false,
       applyHeaderNewStyle: false,
       showTestCloseIcon: false,
+      data: null,
+      contact_headers: {},
+      main_texts: {},
+      advantage_blocks: {},
+      advantages: {},
+      advantages1: {},
+      advantages2: {},
+      advantages3: {},
+      advantages4: {},
+      advantages5: {},
+      programs: {},
+      program_types: {},
+      program_types1: {},
+      program_types2: {},
+      program_types3: {},
+      teacher_blocks: {},
+      teachers: {},
+      teachers1: {},
+      teachers2: {},
+      teachers3: {},
+      abouts: {},
+      course_block: {},
+      course_detail: {},
+      course_detail1: {},
+      course_detail2: {},
+      course_detail3: {},
+      course: {},
+      course1: {},
+      course2: {},
+      course3: {},
+      video_review_blocks: {},
+      video_reviews: {},
+      video_reviews1: {},
+      text_review_blocks: {},
+      text_reviews: {},
+      question_blocks: {},
+      questions: {},
+      questions1: {},
+      questions2: {},
+      social_media: {},
+
+
+
+
+
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -987,7 +1034,6 @@ export default {
         { question: 'Могу ли я записаться на занятия другого уровня?', answer: 'Конечно', open: false },
         { question: 'Кто мой личный преподаватель?', answer: 'Шрэк', open: false },
         { question: 'Могу я задать вопросы по учебнику?', answer: 'Нет', open: false }
-
       ],
     }
   },
@@ -1002,6 +1048,7 @@ export default {
       this.windowWidth = window.innerWidth
       console.log(this.isMobile)
     });
+    this.getData();
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -1052,8 +1099,11 @@ export default {
       console.log('Selected block:', block);
       this.chosenBlock = block;
     },
+    // toggleAccordion(index) {
+    //   this.qas[index].open = !this.qas[index].open;
+    // },
     toggleAccordion(index) {
-      this.qas[index].open = !this.qas[index].open;
+      this.questions[index].answerVisible = !this.questions[index].answerVisible;
     },
     arrowClass(isOpen) {
       return isOpen ? 'arrow down' : 'arrow up';
@@ -1073,6 +1123,57 @@ export default {
     closeFirstModal() {
       this.isFirstModalVisible = false;
       document.body.style.overflow = '';
+    },
+    getData() {
+      let url = `https://komatech.online/all-data/`;
+      axios
+        .get(url)
+        .then(response => {
+          console.log(response.data);
+          this.data = response.data;
+          this.contact_headers = response.data.contact_headers[0];
+          this.main_texts = response.data.main_texts[0];
+          this.advantage_blocks = response.data.advantage_blocks[0];
+          this.advantages = response.data.advantages[0];
+          this.advantages1 = response.data.advantages[1];
+          this.advantages2 = response.data.advantages[2];
+          this.advantages3 = response.data.advantages[3];
+          this.advantages4 = response.data.advantages[4];
+          this.advantages5 = response.data.advantages[5];
+          this.programs = response.data.programs[0];
+          this.program_types = response.data.program_types[0];
+          this.program_types1 = response.data.program_types[1];
+          this.program_types2 = response.data.program_types[2];
+          this.program_types3 = response.data.program_types[3];
+          this.teacher_blocks = response.data.teacher_blocks[0];
+          this.teachers = response.data.teachers[0];
+          this.teachers1 = response.data.teachers[1];
+          this.teachers2 = response.data.teachers[2];
+          this.teachers3 = response.data.teachers[3];
+          this.abouts = response.data.abouts[0];
+          this.course_block = response.data.course_block[0];
+          this.course_detail = response.data.course_detail[0];
+          this.course_detail1 = response.data.course_detail[1];
+          this.course_detail2 = response.data.course_detail[2];
+          this.course_detail3 = response.data.course_detail[3];
+          this.course = response.data.course[0];
+          this.course1 = response.data.course[1];
+          this.course2 = response.data.course[2];
+          this.course3 = response.data.course[3];
+          this.video_review_blocks = response.data.video_review_blocks[0];
+          this.video_reviews = response.data.video_reviews[0];
+          this.video_reviews1 = response.data.video_reviews[1];
+          this.text_review_blocks = response.data.text_review_blocks[0];
+          this.text_reviews = response.data.text_reviews[0];
+          this.question_blocks = response.data.question_blocks[0];
+          this.questions = response.data.questions;
+          this.social_media = response.data.social_media[0];
+
+
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
   },
   components: {
@@ -1371,11 +1472,16 @@ h2 {
   margin: 140px 0 0 0;
 }
 
-.banner__advantages_second-row,
+.banner__advantages_second-row {
+  margin-top: 110px;
+  display: flex;
+  gap: 350px;
+}
+
 .banner__advantages_third-row {
   margin-top: 110px;
   display: flex;
-  gap: 310px;
+  gap: 200px;
 }
 
 h3 {
@@ -2541,6 +2647,7 @@ iframe {
   line-height: 120%;
   color: #051d65;
   padding: 34px 200px 32px 32px;
+  white-space: nowrap;
 }
 
 .arrow {
@@ -2582,6 +2689,14 @@ iframe {
 .panel_answer {
   padding: 32px 0;
   margin: 0;
+}
+
+.panel_answer_backend {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  padding: 0 32px;
+  color: #333;
 }
 
 .accordion.active {
@@ -2915,15 +3030,15 @@ iframe {
     margin: 140px 100px 150px 100px;
 
     &_first-row {
-      gap: 70px;
+      gap: 60px;
     }
 
     &_second-row {
-      gap: 150px;
+      gap: 200px;
     }
 
     &_third-row {
-      gap: 170px;
+      gap: 50px;
     }
   }
 
@@ -3434,7 +3549,10 @@ iframe {
     }
   }
 
-  .banner__advantages_second-row,
+  .banner__advantages_second-row {
+    gap: 170px;
+  }
+
   .banner__advantages_third-row {
     gap: 100px;
   }
@@ -3550,7 +3668,7 @@ iframe {
   .banner__level .container_line {
     gap: 20px;
   }
-  
+
   .modal__application {
     margin: 5px 0 0 0;
   }

@@ -8,8 +8,6 @@ export default defineNuxtConfig({
       Montserrat: [400, 500, 700],
       Questrial: [400, 500, 700],
       Poppins: [400, 500, 700],
-
-
     },
   },
 });
