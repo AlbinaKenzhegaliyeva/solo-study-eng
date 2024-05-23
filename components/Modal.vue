@@ -4,7 +4,7 @@
       <div class="modal">
         <header :class="{'modal-header': true, 'modal-header-new-style': applyHeaderNewStyle}">
           <slot name="header"></slot>
-          <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close" v-if="!showWhiteCloseIcon">
+          <img src="@/assets/img/close.svg" alt="close" @click="close" class="header__close" v-if="!showDefaultCloseIcon">
           <img src="@/assets/img/close-white.svg" alt="close" @click="close" class="header__close_white" v-if="!showTestCloseIcon">
           <img src="@/assets/img/close_white_lg.svg" alt="close" @click="close" class="header__close_white-lg" v-if="showWhiteCloseIcon">
           <img src="@/assets/img/close-test.svg" alt="close" @click="close" class="header__close_test-mb" v-if="showTestCloseIcon">
@@ -33,6 +33,10 @@ export default {
       default: false
     },
     showTestCloseIcon: {
+      type: Boolean,
+      default: false
+    },
+    showDefaultCloseIcon: {
       type: Boolean,
       default: false
     },

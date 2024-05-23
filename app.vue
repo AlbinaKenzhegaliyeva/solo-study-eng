@@ -238,21 +238,21 @@
         <p class="banner__programs-form-level">Не знаете какой уровень Вам подойдет?</p>
         <div class="banner__programs-form-name">
           <label>Ваше ФИО</label>
-          <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя">
+          <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя" v-model="name">
         </div>
         <div class="banner__programs-form-telephone">
           <label>Номер телефона</label>
-          <input type="text" class="banner__programs-form-name-input" placeholder="+7">
+          <input type="text" class="banner__programs-form-name-input" placeholder="+7" v-model="telephone">
         </div>
         <div class="banner__programs-form-comment">
           <label>Комментарий</label>
           <div class="banner__programs-form-comment-input-wrapper">
             <input type="text" class="banner__programs-form-comment-input"
-              placeholder="Напишите свой вопрос или комментарий...">
+              placeholder="Напишите свой вопрос или комментарий..." v-model="comment">
           </div>
         </div>
         <div class="banner__programs-form-btn">
-          <button class="banner__programs-form-button" @click="showModal">Получить консультацию</button>
+          <button class="banner__programs-form-button" @click="createConsultation">Получить консультацию</button>
           <Modal v-show="isModalVisible" @close="closeModal">
             <template #header>
               <div class="modal__request-form">
@@ -265,17 +265,17 @@
                 <div class="modal__form">
                   <div class="banner__programs-form-name">
                     <label>Ваше имя</label>
-                    <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя">
+                    <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя" v-model="name">
                   </div>
                   <div class="banner__programs-form-telephone">
                     <label>Номер телефона</label>
-                    <input type="text" class="banner__programs-form-name-input" placeholder="+7">
+                    <input type="text" class="banner__programs-form-name-input" placeholder="+7" v-model="telephone">
                   </div>
                   <div class="banner__programs-form-comment">
                     <label>Комментарий</label>
                     <div class="banner__programs-form-comment-input-wrapper">
                       <input type="text" class="banner__programs-form-comment-input"
-                        placeholder="Напишите свой вопрос или комментарий...">
+                        placeholder="Напишите свой вопрос или комментарий..." v-model="comment">
                     </div>
                   </div>
                   <div class="banner__programs-form-btn">
@@ -298,7 +298,7 @@
   </div>
 
   <Modal v-show="isModalApplicationVisible" @close="closeApplication" :showWhiteCloseIcon="showWhiteCloseIcon"
-    :applyHeaderNewStyle="applyHeaderNewStyle">
+    :showDefaultCloseIcon="showDefaultCloseIcon" :applyHeaderNewStyle="applyHeaderNewStyle">
     <template #header>
       <div class="modal__application">
         <img src="@/assets/img/school2.svg" alt="logo">
@@ -876,7 +876,7 @@
         <p class="banner__contacts-info-topic">Как с нами связаться</p>
         <div class="banner__contacts-info-location">
           <img src="@/assets/img/spot.svg" alt="map">
-          <div class="banner__contacts-info-location-address" style="padding: 0 350px 0 0;">
+          <div class="banner__contacts-info-location-address">
             <p class="banner__contacts-info-location-address-text">{{ this.contact_headers.address }}</p>
             <!-- <p class="banner__contacts-info-location-address-text">ул. Садовая, д. 53, офис 1121</p> -->
           </div>
@@ -903,9 +903,8 @@
     <div class="footer">
       <div class="footer-options">
         <div class="footer-options__logo">
-          <!-- <img src="@/assets/img/school2.svg" alt="logo" class="footer-options__logo-school"> -->
-          <img :src="'https://komatech.online' + social_media.logo" alt="logo" class="footer-options__logo-school">
-          <img src="@/assets/img/socials.svg" alt="social" class="footer-options__logo-socials">
+          <img src="@/assets/img/school2.svg" alt="logo" class="footer-options__logo-school">
+          <img :src="'https://komatech.online' + social_media.logo" alt="social" class="footer-options__logo-socials">
         </div>
         <div class="footer-options__navigation">
           <p class="footer-options__navigation-text-bold">НАВИГАЦИЯ</p>
@@ -980,6 +979,7 @@ export default {
       isTestVisible: false,
       isModalApplicationVisible: false,
       showWhiteCloseIcon: false,
+      showDefaultCloseIcon: false,
       applyHeaderNewStyle: false,
       showTestCloseIcon: false,
       data: null,
@@ -1022,10 +1022,9 @@ export default {
       questions1: {},
       questions2: {},
       social_media: {},
-
-
-
-
+      name: '',
+      telephone: '',
+      comment: '',
 
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
@@ -1054,9 +1053,18 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    showModal() {
+      this.isModalVisible = true;
+      document.body.style.overflow = 'hidden';
+    },
+    closeModal() {
+      this.isModalVisible = false;
+      document.body.style.overflow = '';
+    },
     openApplication() {
       this.isModalApplicationVisible = true;
       this.showWhiteCloseIcon = true;
+      this.showDefaultCloseIcon = true;
       this.applyHeaderNewStyle = true;
       this.isModalVisible = false;
       document.body.style.overflow = 'hidden';
@@ -1065,6 +1073,9 @@ export default {
       this.isModalApplicationVisible = false;
       this.isModalVisible = false;
       document.body.style.overflow = '';
+      this.name = '';
+      this.telephone = '';
+      this.comment = '';
     },
     startTest() {
       this.isTestVisible = true;
@@ -1107,14 +1118,6 @@ export default {
     },
     arrowClass(isOpen) {
       return isOpen ? 'arrow down' : 'arrow up';
-    },
-    showModal() {
-      this.isModalVisible = true;
-      document.body.style.overflow = 'hidden';
-    },
-    closeModal() {
-      this.isModalVisible = false;
-      document.body.style.overflow = '';
     },
     showFirstModal() {
       this.isFirstModalVisible = true;
@@ -1168,13 +1171,27 @@ export default {
           this.question_blocks = response.data.question_blocks[0];
           this.questions = response.data.questions;
           this.social_media = response.data.social_media[0];
-
-
         })
         .catch(error => {
           console.error(error);
         });
     },
+    createConsultation() {
+      let url = `https://komatech.online/consultation-create/`;
+      axios
+        .post(url, {
+          name: this.name,
+          phone: this.telephone,
+          comments: this.comment,
+        })
+        .then(response => {
+          console.log(response.data);
+          this.isModalApplicationVisible = true;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   },
   components: {
     Swiper,
@@ -1642,6 +1659,18 @@ h3 {
     position: relative;
   }
 
+  input[type="text"] {
+    font-size: 22px;
+    padding: 0 20px;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+  }
+
   &-form-comment-input {
     border: 1px solid #051d65;
     border-radius: 10px;
@@ -1658,8 +1687,9 @@ h3 {
     color: #333;
     opacity: 0.3;
     position: absolute;
-    top: 16px;
+    //top: 16px;
     left: 16px;
+    padding: 0 70px 0 0;
   }
 
   &-form-name-input::placeholder {
@@ -1668,7 +1698,7 @@ h3 {
     line-height: 101%;
     color: #333;
     opacity: 0.3;
-    padding: 23px 0 23px 16px;
+    padding: 23px 0 23px 0;
   }
 
   &-form-button {
@@ -3098,7 +3128,7 @@ iframe {
     }
 
     &-form-level {
-      font-size: 28px;
+      font-size: 30px;
     }
 
     &-form-name-input {
@@ -3231,6 +3261,30 @@ iframe {
 
   iframe {
     width: 700px;
+  }
+
+  .banner__questions {
+    padding: 200px 50px;
+
+    &-collapse-ask {
+      gap: 50px;
+    }
+
+    &-ask-topic {
+      font-size: 38px;
+    }
+
+    &-ask-text {
+      font-size: 24px;
+    }
+
+    &-ask-btn {
+      width: 100%;
+    }
+  }
+
+  .accordion {
+    padding: 34px 150px 32px 32px;
   }
 
   .footer {
@@ -3419,7 +3473,24 @@ iframe {
   }
 
   .banner__questions-collapse-ask {
-    gap: 150px;
+    gap: 40px;
+  }
+
+  .banner__questions-ask-topic {
+    font-size: 33px;
+    white-space: nowrap;
+  }
+
+  .banner__questions-ask-text {
+    font-size: 20px;
+  }
+
+  .accordion {
+    padding: 34px 100px 32px 32px;
+
+    span {
+      font-size: 25px;
+    }
   }
 
   .banner__contacts-map-info-img {
@@ -3736,19 +3807,28 @@ iframe {
   }
 
   .banner__questions {
-    padding: 200px 30px;
+    padding: 150px 30px;
 
     &-topic {
       font-size: 40px;
     }
 
     &-ask-topic {
-      font-size: 35px;
+      font-size: 33px;
+    }
+
+    &-collapse-ask {
+      flex-direction: column;
+      gap: 70px;
     }
   }
 
-  .banner__questions-collapse-ask {
-    gap: 70px;
+  .accordion span {
+    font-size: 23px;
+  }
+
+  .panel_answer_backend {
+    font-size: 20px;
   }
 
   .banner__contacts {
@@ -4317,7 +4397,6 @@ iframe {
     margin: 8px 0 0 0;
   }
 
-
   .banner__videos {
     padding: 100px 0 100px 0;
   }
@@ -4407,6 +4486,16 @@ iframe {
     padding: 32px 30px 32px 0;
     font-size: 18px;
     text-align: left;
+    white-space: normal;
+  }
+
+  .accordion span {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .panel_answer_backend {
+    font-size: 16px;
   }
 
   .arrow {
