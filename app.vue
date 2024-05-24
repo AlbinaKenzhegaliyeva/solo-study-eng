@@ -265,7 +265,8 @@
                 <div class="modal__form">
                   <div class="banner__programs-form-name">
                     <label>Ваше имя</label>
-                    <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя" v-model="name">
+                    <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя"
+                      v-model="name">
                   </div>
                   <div class="banner__programs-form-telephone">
                     <label>Номер телефона</label>
@@ -279,7 +280,8 @@
                     </div>
                   </div>
                   <div class="banner__programs-form-btn">
-                    <button class="banner__programs-form-button" @click="openApplication">Получить консультацию</button>
+                    <button class="banner__programs-form-button" @click="createConsultation">Получить
+                      консультацию</button>
                   </div>
                   <div class="modal__form-terms">
                     <p class="modal__form-terms-text" v-if="!isMobile">Нажимая на “Получить консультацию”, я даю
@@ -485,38 +487,45 @@
     </template>
   </Modal>
 
-  <Modal v-show="isTestVisible" @close="finishTest" :showTestCloseIcon="showTestCloseIcon">
+  <Modal v-show="isTestVisible" @close="cancelresultsReady" :showTestCloseIcon="showTestCloseIcon">
     <template #header v-if="!isMobile">
       <div class="modal__eng-test">
         <p class="modal__eng-test-topic">Выберите правильный ответ</p>
-        <div class="modal__eng-test-question">
-          <p class="modal__eng-test-question-text">2. I ...... 25 years old.</p>
-        </div>
-        <div class="modal__eng-test-answers">
-          <div class="modal__eng-test-answers-input">
-            <input type="checkbox" id="a" name="a" value="have">
-            <label for="a"> a) have</label>
+        <div v-show="index === questionIndex" v-for="(testQuestion, index) in testQuestions" :key="testQuestion.id">
+          <div class="modal__eng-test-question">
+            <p class="modal__eng-test-question-text">{{ testQuestion.question_text }}</p>
           </div>
-          <div class="modal__eng-test-answers-input">
-            <input type="checkbox" id="a" name="a" value="have">
-            <label for="a"> b) am </label>
-          </div>
-          <div class="modal__eng-test-answers-input">
-            <input type="checkbox" id="a" name="a" value="have">
-            <label for="a"> c) has</label>
-          </div>
-          <div class="modal__eng-test-answers-input">
-            <input type="checkbox" id="a" name="a" value="have">
-            <label for="a"> d) is</label>
+          <div class="modal__eng-test-answers">
+            <div class="modal__eng-test-answers-input">
+              <input type="checkbox" :id="'a' + index" :name="'a' + index" value="a" @change="selectAnswer(index, 'a')">
+              <label :for="'a' + index"> a) {{ testQuestion.option_a }}</label>
+            </div>
+            <div class="modal__eng-test-answers-input">
+              <input type="checkbox" :id="'b' + index" :name="'b' + index" value="b" @change="selectAnswer(index, 'b')">
+              <label :for="'b' + index"> b) {{ testQuestion.option_b }} </label>
+            </div>
+            <div class="modal__eng-test-answers-input">
+              <input type="checkbox" :id="'c' + index" :name="'c' + index" value="c" @change="selectAnswer(index, 'c')">
+              <label :for="'c' + index"> c) {{ testQuestion.option_c }}</label>
+            </div>
+            <div class="modal__eng-test-answers-input">
+              <input type="checkbox" :id="'d' + index" :name="'d' + index" value="d" @change="selectAnswer(index, 'd')">
+              <label :for="'d' + index"> d) {{ testQuestion.option_d }}</label>
+            </div>
           </div>
         </div>
         <div class="modal__eng-test-buttons">
-          <div class="modal__eng-test-buttons-prev">
+          <div class="modal__eng-test-buttons-prev" v-if="questionIndex > 0" v-on:click="prev">
             <img src="@/assets/img/arrow-left.svg" alt="arrow">
             <p class="modal__eng-test-buttons-prev-text">Предыдущий вопрос</p>
           </div>
-          <div class="modal__eng-test-buttons-next">
+          <div class="modal__eng-test-buttons-next" v-on:click="next" v-if="questionIndex != testQuestions.length - 1">
             <p class="modal__eng-test-buttons-next-text">Следующий вопрос</p>
+            <img src="@/assets/img/arrow-right.svg" alt="arrow">
+          </div>
+          <div class="modal__eng-test-buttons-next" v-if="questionIndex == testQuestions.length - 1"
+            @click="resultsReady">
+            <p class="modal__eng-test-buttons-next-text">Завершить тест</p>
             <img src="@/assets/img/arrow-right.svg" alt="arrow">
           </div>
         </div>
@@ -556,6 +565,54 @@
             <img src="@/assets/img/arrow-right.svg" alt="arrow">
           </div>
         </div>
+      </div>
+    </template>
+  </Modal>
+
+  <Modal v-show="isResultsReady" @close="cancelresultsReady">
+    <template #header>
+      <div class="modal__request-form">
+        <div class="modal__request">
+          <img src="@/assets/img/school2.svg" alt="logo">
+          <p class="modal__request-topic_test">Результаты готовы!</p>
+        </div>
+        <div class="modal__form">
+          <p class="modal__form_results-text">Оставьте свои данные, и мы отправим Ваши результаты на e-mail</p>
+          <div class="banner__programs-form-name">
+            <label>Ваше имя</label>
+            <input type="text" class="banner__programs-form-name-input" placeholder="Введите имя" v-model="nameForTest">
+          </div>
+          <div class="banner__programs-form-telephone">
+            <label>Номер телефона</label>
+            <input type="text" class="banner__programs-form-name-input" placeholder="+7" v-model="telephoneForTest">
+          </div>
+          <div class="banner__programs-form-comment">
+            <label>Ваш e-mail</label>
+            <div class="banner__programs-form-comment-input-wrapper">
+              <input type="text" class="banner__programs-form-name-input" placeholder="Укажите Вашу почту"
+                v-model="emailForTest">
+            </div>
+          </div>
+          <div class="banner__programs-form-btn">
+            <button class="banner__programs-form-button" @click="finishTest">Получить результаты</button>
+          </div>
+          <div class="modal__form-terms">
+            <p class="modal__form-terms-text" v-if="!isMobile">Нажимая на “Получить консультацию”, я даю согласие на
+              обработку персональных данных</p>
+          </div>
+        </div>
+      </div>
+    </template>
+  </Modal>
+
+  <Modal v-show="isFinishedTestVisible" @close="closeTest" :showWhiteCloseIcon="showWhiteCloseIcon"
+    :showDefaultCloseIcon="showDefaultCloseIcon" :applyHeaderNewStyle="applyHeaderNewStyle">
+    <template #header>
+      <div class="modal__application">
+        <img src="@/assets/img/school2.svg" alt="logo">
+        <p class="modal__application-topic">Всё готово!</p>
+        <p class="modal__application-text">Проверьте свою эл. почту, мы уже отправили Ваши результаты :)</p>
+        <button class="modal__application-button" @click="closeTest">На главную</button>
       </div>
     </template>
   </Modal>
@@ -982,6 +1039,8 @@ export default {
       showDefaultCloseIcon: false,
       applyHeaderNewStyle: false,
       showTestCloseIcon: false,
+      isFinishedTestVisible: false,
+      isResultsReady: false,
       data: null,
       contact_headers: {},
       main_texts: {},
@@ -1025,7 +1084,13 @@ export default {
       name: '',
       telephone: '',
       comment: '',
-
+      testQuestions: [],
+      questionIndex: 0,
+      nameForTest: '',
+      telephoneForTest: '',
+      emailForTest: '',
+      tests: [1, 2, 3, 4, 5, 6],
+      answers: [],
       qas: [
         { question: 'Как я могу записаться на занятия с преподавателем?', answer: 'Свяжитесь с нами с помошью формы на сайте и наш менеджер перезвонит Вам в самое ближайшее время. Приходите к нам в офис в г. Санкт-Петербурге и наши специалисты проконсультируют Вас по всем вопросам Позвоните нам по нашему номеру +7 (921) 320 74 06', open: false },
         { question: 'Сколько длится одно занятие?', answer: 'Вечность', open: false },
@@ -1076,15 +1141,85 @@ export default {
       this.name = '';
       this.telephone = '';
       this.comment = '';
+      this.emailForTest = '';
+      this.nameForTest = '';
+      this.telephoneForTest = '';
+      this.answers = '';
+    },
+    resultsReady() {
+      this.isResultsReady = true;
+    },
+    cancelresultsReady() {
+      this.isResultsReady = false;
+      this.isTestVisible = false;
+      this.isModalTestVisible = false;
+    },
+    selectAnswer(index, answer) {
+      // Проверяем, нужно ли увеличить длину массива
+      if (this.answers.length <= index) {
+        // Заполняем массив значениями '-' до нужного индекса
+        for (let i = this.answers.length; i <= index; i++) {
+          this.answers.push('-');
+        }
+      }
+      // Устанавливаем ответ на соответствующий индекс
+      this.answers[index] = answer;
     },
     startTest() {
       this.isTestVisible = true;
       document.body.style.overflow = 'hidden';
+      let url = `https://komatech.online/test/`;
+      axios
+        .get(url)
+        .then(response => {
+          console.log(response.data);
+          this.data = response.data;
+          this.testQuestions = response.data[0].questions;
+          console.log(this.testQuestions.length)
+        })
+        .catch(error => {
+          console.error(error);
+        });
     },
     finishTest() {
       this.isTestVisible = false;
       this.isModalTestVisible = false;
+      this.showWhiteCloseIcon = true;
+      this.showDefaultCloseIcon = true;
+      this.applyHeaderNewStyle = true;
       document.body.style.overflow = '';
+      for (let i = 0; i < this.testQuestions.length; i++) {
+        if (!this.answers[i]) {
+          this.answers[i] = '-';
+        }
+      }
+      console.log(this.answers);
+
+      let url = `https://komatech.online/test/`;
+      this.isModalTestVisible = true;
+      this.showTestCloseIcon = true;
+      axios
+        .post(url, {
+          email: this.emailForTest,
+          name: this.nameForTest,
+          phone: this.telephoneForTest,
+          questions: this.tests,
+          answers: this.answers,
+        })
+        .then(response => {
+          console.log(response.data);
+          this.isFinishedTestVisible = true;
+          this.isResultsReady = false;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+    next() {
+      this.questionIndex++;
+    },
+    prev() {
+      this.questionIndex--;
     },
     openTest() {
       this.isModalTestVisible = true;
@@ -1093,6 +1228,7 @@ export default {
     },
     closeTest() {
       this.isModalTestVisible = false;
+      this.isFinishedTestVisible = false;
       document.body.style.overflow = '';
     },
     openMenu() {
@@ -1111,7 +1247,7 @@ export default {
       this.chosenBlock = block;
     },
     // toggleAccordion(index) {
-    //   this.qas[index].open = !this.qas[index].open;
+    //   this.qas[index].open = !this.qas[index].open; 
     // },
     toggleAccordion(index) {
       this.questions[index].answerVisible = !this.questions[index].answerVisible;
@@ -1178,6 +1314,7 @@ export default {
     },
     createConsultation() {
       let url = `https://komatech.online/consultation-create/`;
+      this.openApplication();
       axios
         .post(url, {
           name: this.name,
@@ -1191,7 +1328,7 @@ export default {
         .catch(error => {
           console.error(error);
         });
-    }
+    },
   },
   components: {
     Swiper,
@@ -1776,6 +1913,14 @@ label {
   gap: 8px;
   margin-top: 24px;
 }
+
+.banner__programs-form {
+  &-name-input {
+    padding: 0 20px;
+    font-size: 22px;
+  }
+}
+
 
 .banner__teachers {
   margin: 150px 100px;
@@ -2928,6 +3073,24 @@ iframe {
   line-height: 100%;
   color: #fff;
   margin: 310px 0 30px 0;
+}
+
+.modal__request-topic_test {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 100%;
+  color: #fff;
+  margin: 500px 0 44px 0;
+}
+
+.modal__form_results-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 120%;
+  color: #051d65;
+  margin: 39px 0 0 0;
 }
 
 .modal__request-text {
